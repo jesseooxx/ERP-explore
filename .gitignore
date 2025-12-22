@@ -1,0 +1,11 @@
+# Large files - exceed GitHub limit
+data/BK7.bak
+docs/erp-manuals/GOLDENTOP_1.chm
+
+# Backup files
+*.bak
+
+# Common ignores
+.DS_Store
+Thumbs.db
+*.log
