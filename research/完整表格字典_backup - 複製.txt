@@ -1,0 +1,883 @@
+Addr|Addr(不再使用)|Addr(Not Use)
+CurrencyExRate|公司幣別匯率表|CurrencyExRate Table
+CustAllLog|用戶操作日誌|Cust Operation Log
+CustMark|客戶嘜頭資料|Cust Shipping Mark Data
+CustMarkImg|客戶嘜頭圖片資料|Cust Shipping Mark Picture Data
+CustMarkTImg|嘜頭模版圖片資料|Shipping Mark Template Picture Data
+CustMarkTmpt|嘜頭模板資料|Shipping Mark Template Data
+DesignXML|自訂流程設定XML檔案|Personal Setting Process XML
+DesignXML2006|自訂義流程主檔|Personal Setting Process Mostly
+DesignXMLUser|2006版menu桌面初始值|2006 Edition Menu Desktop Default
+DirectorAudit|主管稽核檔案|Director Audit
+ERPDocAttrib|ERP單據對應檔案|ERP Doc. Attrib
+ERPDocRpt|送簽單據對應外部程式檔案|Send To Sign Doc. Correspond Out Program
+ERPProgram|送簽單據對應外部程式檔案|Send To Sign Doc. Correspond Out Program
+F1Help|F1Help(不再使用)|F1Help(Not Use)
+F6Image|多媒體資料|Multimedia Data
+FormStyle|自定義報表格式資料|User Defined Statement Format Data
+HTRpfDoc|表頭/表尾文檔資料|Table Head/Table Tail File Data
+HTRpfImg|表頭/表尾文檔圖片資料|Table Head/Table Tail File Picture Data
+IPCtrl|IP 限制設定|IP Ctrl Set
+ItemSpec|ItemSpec(不再使用)|ItemSpec(Not Use)
+Letter|開發信word文件表|Letter Word File Table
+Logtem04|產品描述拋轉記錄|Item Desc Migrated Record
+Logtfm02|訂單產品拋轉記錄|Order Item Migrated Record
+MRPTruncateLog|生管單據清檔歷史紀錄檔|PC Docs. Clear File History Record
+MediaSet|多媒體資料數據(不再使用)|MultiMedia Data(Not Use)
+MediaSetA|多媒體資料數據|MultiMedia Data
+Menu2005OpRecord|用戶登陸時間記錄|Is Used Record User's Login Time
+MessagePipe|BBCall消息設定|BBCall Message Set
+Model|新版自定義模版檔|New User Defined Model
+Name|名字(不再使用)|Name(Not Use)
+PDF|報表生成文件PDF紀錄檔|Report Create PDF File Record
+PageFormData|報表PageForm資料|Report PageForm Data
+Remark|描述(不再使用)|Remark(Not Use)
+ShpgMark|出貨嘜頭資料|Shipping Mark Data
+ShpgMarkImg|出貨嘜頭圖片資料|Shipping Mark Picture Data
+ShpgMarkMst|出貨嘜頭主檔|Shipping Mark Mostly
+TextData|文字描述資料|Letter Description Data
+Tg1p02Log|採購建議拋轉日誌|Purchase Proposal Migrated Log
+Tg1p02tsm12|採購建議拋轉最後一次選項條件|The Last Time Purchase Proposal Migrated
+XMLTemplate|自訂流程設定XML預設檔案|Personal Setting Process Set XML Default
+autonotify|自動免簽操作紀錄檔|Auto Free Sgn Operate Record
+bissm01|B.I.S 模板基本資料|B.I.S Template Basic Data
+bissm02|B.I.S 用戶操作權限|B.I.S User Operate Privilege
+bulletin|企業訊息|Project Message
+ctbak|綜合單據設定自定義報表-紙張設定|Synthesis Paper SET User-defined Statement - Sheet Set
+cttab|綜合單據設定自定義報表-頁面元件定義|Synthesis Paper SET User-defined Statement - Page Component Defined
+custtab1|客戶自定義報表-紀錄報表程式名稱和相關的表名|Customer User Defined Statement-Program And Table
+custtab2|客戶自定義報表-紀錄使用者權限的表|Customer User-defined Statement-User Right
+datsm01|客戶系統設定|Customer System Set
+datsm02|客戶系統設定|Customer System Set
+datsm03|客戶系統設定|Customer System Set
+datsm04|客戶系統設定|Customer System Set
+datsm05|客戶系統設定|Customer System Set
+datsm06|客戶系統設定|Customer System Set
+datsm07|客戶系統設定|Customer System Set
+datsm08|客戶系統設定|Customer System Set
+datsm09|客戶系統設定|Customer System Set
+datsm10|客戶系統設定|Customer System Set
+datsm11|客戶系統設定|Customer System Set
+dayadic|日曆事務用語資料|Calendar Affair Diction Info
+dayaff|日曆事務資料|Calendar Affair Info
+dayaptc|日曆事務參與者資料|Calendar Affair Actor Info
+dayduty|日曆上班日程設定|Calendar Clock_In Calendar Set
+daylcal|農曆資料|Agriculture Info
+dsauthority|資料檢索用戶|Info Searches User Privilege
+dsfieldinf|欄位名資料|Collumn_Na. Info
+dsinquiry|檢索條件資料|Searches Condition Info
+dstableinf|表名資料|Statement Name Info
+eam01|簽核流程設定主檔|Sign Process Set Mostly
+eam02|簽核流程設定-各關批核權限|Sign Process Set-Every Step Audit Privilege
+eam03|簽核流程設定-各關批核人員|Sign Process Set-Every Step Audit Man
+eam04|簽核流程設定-包含人員|Sign Process Set-Including Person
+eam05|代理人設定|Deputy Set
+ebm01|送簽申請主檔|Sign Apply Mostly
+ebm02|送簽表單之附件檔|Sign Form Attachment
+ebm03|送簽表單流程-各關批核權限|Sign Form Process-Every Step Audit Privilege
+ebm04|送簽表單-各關批核人員|Sign From-Every Step Audit Man
+ebm05|送簽表單-各關批核附件檔案|Sign From-Every Step Audit Attachment
+esm01|送簽表單設定主檔|Sign From Set Mostly
+esm02|送簽表單設定-報表/查詢程式|Sign From Set-Report/Query Program
+esm03|送簽表單-報表/查詢程式 傳參數|Sign Form-Report/Query Program Arg.
+esm04|送簽表單設定-自填附件|Sign From Set-Self Fill Attachment
+esm05|代碼設定|Code Set
+esm06|專家版 FLOW 表單設定主檔|Production Version FLOW From Set Mostly
+esm07|專家版 FLOW 表單設定說明檔|Production Version FLOW From Set Explanation
+esm08|專家版 FLOW 表單設定人員檔|Production Version FLOW From Set Personnel
+esm09|覆核管理覆核人記錄檔|Checked Management Auditor Record
+fam04|供應商匯款帳號|Supplier Remit Account
+fam05|關帳月份|Closed Month
+fam06|公司記帳幣別|Company Account Currency
+fam07|科目大類系統碼設定|Acc CategorySys No. Set
+fam09|會計類別設定|Bursar Type Set
+fam10|會計科目設定|Bursar Acct Set
+fam11|傳票性質設定|Subpena Properties Set
+fam12|常用分錄表頭檔|Commonly Journal Table Head
+fam13|常用分錄表身檔|Commonly Journal Table Body
+fam14|常用分錄更多摘要說明|Commonly Journal More Summary
+fam15|專案資料設定|Case Sett.tab Set
+fam16|不同公司間會計科目對應|Between Differ Company Bursar Acct. Corresponding
+fam17|客戶/廠商票據抬頭|Customer/Supplier Note Name
+fbm01|傳票主檔|Subpena Mostly
+fbm02|傳票明細檔|Subpena Statement
+fbm04|會計科目統計檔|Bursar Acct. Statistical
+fbm05|會計傳票更多摘要說明|Bursar Subpena More Summary
+fbm06|傳票編號控制檔|Subpena NO. Control
+fbm07|項目設定及調節類別檔|Item Set And Adjust Type
+fbm08|活動項目會計科目設定檔|Campaign Item Bursar Acct. Set
+fbm09|活動項目會計科目設定檔|Campaign Item Bursar Acct. Set
+fcm01|調整分錄設定－主檔|Adjust Journal Setting-Mostly
+fcm02|調整分錄設定－明細檔|Adjust Journal Setting-Statement
+fcm03|調整分錄明細檔|Adjust Journal Statement
+fem02|會計科目預算明細檔|Bursar Acct. Budget Statement
+fem03|可用資金預算檔|Available Capital Budget
+fgm01|部門費用分攤主檔|Department Expense Apportion Mostly
+fgm02|部門費用分攤比例設定|Department Expense Apportion Percent Set
+fgm03|費用分攤傳票主檔|Expense Apportion Subpena Mostly
+fgm04|費用分攤傳票明細檔|Expense Apportion Subpena Statement
+fgm05|部門人數設定|Department Person Setting
+fim01|全國銀行資料|National Bank Data
+fim02|往來銀行資料|Related Bank Data
+fim03|票據傳票連線分錄主檔|Note Subpena Journal Mostly
+fim04|票據傳票連線分錄明細檔|Note Subpena Journal Statement
+fim05|往來銀行金額統計檔|Related Bank Amount Statistical
+fix_ba26_log|客戶信用額度變化日誌|Customer Credit Limit Log
+fjm01|票據基本資料檔|Note Basic Data
+fjm02|票據歷史資料檔|Note History Data
+fjm03|銀行存/提款異動主檔|Bank Deposit Accounts/drawing Change Mostly
+fjm04|銀行存/提款異動明細檔|Bank Deposit Accounts/drawing Change Statement
+fjm06|票據號碼範圍設定|Note .No Range Setting
+fjm07|銀行調節作業主檔|Bank Adjust Operation Mostly
+fjm08|銀行調節作業明細檔|Bank Adjust Operation Statement
+fmm01|應付票據領取作業主檔|Payable Note Draw Operation Mostly
+fmm02|應付票據領取作業明細|Payable Note Draw Operation Statement
+fnm01|待切傳票主檔|Will Cut Voucher Mostly
+fnm02|傳票明細檔|Subpena Statement
+fnm03|會計連線科目主檔|Bursar Send Pipeline Acct. Mostly
+fnm04|會計連線科目明細檔|Bursar Send Pipeline Acct. Statement
+fnm05|加扣款會計科目設定|Plus/Dedu Bursar Acct. Set
+fnm06|固定資產主檔|Fixed Assets Mostly
+fnm07|固定資產修繕明細|Fixed Assets Remedy Deatil
+fnm08|固定資產傳票分錄|Fixed Assets Subpena Journal
+fnm09|固定資產折舊攤提明細|Fixed Assets Depreciation Active Service Deatil
+fnm10|存貨科目明細分錄設定檔|Inventory Acct Detail Set
+fnm11|財務連線:拋轉公司設定|Finance Inventory Migrated Company Set
+fnm12|公司成本科目設定檔|Company Cost Acct Set
+fnm13|薪資會計科目細項設定|Salary Bursar Acct Update List Set
+fnm14|待切傳票依薪資項目彙總|Will Cut Subpena In Salary Item Sum
+fnm15|財務連線產品分錄設定檔|Finance Connectivity Products Set Records
+fnm16|異動單據待切傳票主檔|Change Order Will Cut Subpena Mostly
+fnm17|異動單據待切傳票明細檔|Change Order Will Cut Subpena Statement
+fnm18|異動單據會計連線科目主檔|Change Order Bursar Pipeline Acct. Mostly
+fnm19|異動單據會計連線科目明細檔|Change Order Bursar Pipeline Acct. Statement
+fnm20|異動單據產品科目明細檔|Change Order Item Acct. Statement
+fnm21|用戶拋轉單據設定檔|User Migrated Paper Set
+fom01|財務 ToExcel 主檔|Finance ToExcel Mostly
+fom02|財務 ToExcel 明細檔|Finance ToExcel Statement
+fpm01|固資異動單別設定|Assets Change PaperType Set
+fpm02|資產項目檔|Assets Item
+fpm03|固資編號檔|Assets No
+fpm04|資產科目設定檔|Assets Acct Set
+fpm05|固資請購/訂購主檔|Assets Requisition/Order Mostly
+fpm06|固資請購/訂購異動明細檔|Assets Requisition/Order Change Statement
+fpm07|固資異動明細檔|Assets Change Statement
+fpm08|固資相關單據之備註檔|Assets Related Docs. Remark
+fpm09|固資相關單據加扣款|Assets Related Docs. Plus/Dedu
+fpm10|固資／模具描述檔|Assets/Mold Description
+fqm01|廠商匯款記錄檔|Supplier Remit Record
+fqm02|銀行轉帳表頭檔|Bank Account Transfer Table Header
+fqm03|銀行轉帳明細|Bank Account Transfer Detail
+fqm04|事業群組設定檔|Cause Group Set
+fqm05|事業群組設定明細檔|Cause Group Detail
+fqm06|資產負債表項目設定|Balance Sheet Items Set
+fqm07|科目於各項MODEL分攤作業主檔|MODEL Subjects Assessed In Various Operations Mostly
+fqm08|公司事業群組科目金額計算設定|Cause The Company Calculated The Amount Of Subjects Groups Set
+fqm09|公司事業群組科目MODEL費用設定|Companies Cause Groups Subjects MODEL Costs Set
+fqm10|公司事業群組科目費用計算|Companies Cause Groups Subjects Costs
+fqm11|公司事業群組科目MODEL費用計算|Companies Cause Groups Subjects MODEl Costs
+invbak|出貨自定義報表-紙張設定|Ship User-defined Statement-sheet Set
+invoff|出貨自定義報表-紙張偏移量|Ship User-defined Statement-sheet Offset
+invtab|出貨自定義報表-頁面元件定義|Ship User-defined Statement-page Component Define
+kam01|客戶廠商帳款關係設定|Customer Supplier Account Connection Set
+kam02|業務行程使用 : 客戶加掛檔案|Sales Schedule Used:Customer Add
+kdm01|合約資料主檔|Contract Info Mostly
+kdm02|合約產品明細檔|Contract Item Statement
+kdm03|合約結轉金額調整|Contract Carry Amount Adjust
+kdm04|合約預收款資料維護|Contract Advance Account Data Maintain
+kdm05|產品價格等級設定 (補充)|Item Price Level_No. Set(Add)
+kdm06|合約可出貨分店或會員|Contract Output Sub-shop Or Associator
+kdm07|銷貨/銷退單列表價格變動|Sales/Sales Return Order List Price Change
+kem01|報價單主檔|Quotation Mostly
+kem02|報價產品明細檔|Quotation Item Statement
+kem03|單據拋轉主檔|Paper Migrated Mostly
+kem04|單據拋轉明細檔|Paper Migrated Statement
+kfm01|客戶訂單主檔|Customer Order Mostly
+kfm02|訂單產品明細檔|Order Item Statement
+kfm03|訂單產品分批交貨排程|Order Item Batch Delivery Scheduled
+kfm04|訂單分批出貨排程主檔|Order Batch Delivery Scheduled Mostly
+kfm05|國內訂單產品選擇供應商|Domestic Order Item Choose The Supplier
+khm01|倉庫基本資料|Warehouse Basic Data
+khm02|倉庫聯絡人資料|Warehouse Contract Data
+khm03|倉庫所屬公司關係|Warehouse Include Company Relation
+khm04|產品庫存基本檔|Item Stock Basic
+khm05|異動性質設定|Change Properties Set
+khm06|庫存月異動統計檔|Stock Month Change Statistical
+khm07|產品月價格/成本調整|Item Month Price/cost Adjust
+khm08|庫存異動主檔|Stock Change Mostly
+khm09|庫存異動明細檔|Stock Change Statement
+khm10|進/銷/退貨主檔|Purchase/sales/Return Mostly
+khm11|進/銷/退貨明細檔|Purchase/sales/Return Statement
+khm12|轉貨/盤點主檔|Transfer/Inventory Mostly
+khm13|轉貨/盤點明細檔|Transfer/Inventory Statement
+khm14|借入/借出/寄庫/調整 主檔|Borrow/Lend/Leave With Warehouse/Adjust Mostly
+khm15|借入/借出/寄庫/調整 明細檔|Borrow/Lend/Leave With Warehouse/Adjust Statement
+khm16|借入/借出歸還/寄庫出貨 主檔|Borrow/Lend Return/Leave With Warehouse Ship Mostly
+khm17|借入/借出歸還/寄庫出貨明細檔|Borrow/Lend Return/Leave With Warehouse Ship Statement
+khm18|產品組拆主檔|Item Assembly Disassemble Mostly
+khm19|產品組拆子件明細檔|Item Assembly Disassemble Parts Statement
+khm20|進貨/進口費用 明細檔|Purchase/Import Expense Statement
+khm21|盤點卡主檔|PI Document Mostly
+khm23|盤點卡(盤點單記錄檔)|PI Document(Inventory Docs. Record)
+khm24|POS 讀入記錄檔|POS Readin Record
+khm25|進貨品管驗收檔|Purchase QC Check & Receive
+khm26|產品儲位盤點明細檔|Item PI Document By Bin Number Detail
+kim01|進口到貨資料主檔|Import Arrival Data Mostly
+kim02|進口到貨產品明細|Import Arrival Item Detail
+kim03|進口報關及成本卡主檔|Importing Entry And Cost Card Mostly
+kim04|進口報關產品&分攤明細|Importing Entry Item&Apportion Detail
+kim05|進口品詢價成本試算|Import Product Inquire Cost Trial
+kjm01|發票範圍設定作業|Invoice Range Setting Operation
+kjm02|銷貨/進貨發票主檔|Sales/Purchase Invoice Mostly
+kjm03|進/銷貨發票與庫存單據沖帳明細|Purchase/sales Invoice And Stock Paper Detail
+kjm04|發票庫存進/銷明細檔|Invoice Stock Purchase/sales Statement
+kjm05|發票列印明細|Invoice Print Detail
+kjm06|發票退回 & 折讓主檔|Invoice Return & Allowance Mostly
+kjm07|發票退回 & 折讓明細檔|Invoice Return & Allowance Statement
+kjm08|產品發票庫存檔|Item Invoice Stock
+kjm09|發票庫存異動月統計檔|Invoice Stock Change Statistical
+kjm10|發票系統統計檔|Invoice System Statistical
+kjm11|401、403 申報書資料|401, 403 Declaration Data
+kjm12|零稅率銷售額清單主檔|TAX Free Sale List Mostly
+kjm13|零稅率銷售額清單明細檔|TAX Free Sale List Statement
+kkhm08|庫存(含途程)異動主檔|Stock(include WIP)Change Mostly
+kkhm09|公司幣庫存異動明細檔|Company Currency Stock Change Statement
+kmodify|kmodify(臨時表)|kmodify(Temporary Table)
+knm01|出貨通知單(FOR倉庫)主檔|Ship Requisition(FOR Stock) Mostly
+knm02|出貨通知單(FOR倉庫)明細檔|Ship Requisition(FOR Stock)Statement
+kom01|銀行額度設定檔|Bank Limit Set
+kom02|L/C 開狀結匯主檔|L/C Settlement Of Exchange Ope Mostly
+kom03|L/C 開狀結匯明細檔|L/C Settlement Of Exchange Ope Statement
+kom04|L/C 贖單作業明細檔|L/C Redemption Process Statement
+kom05|銀行還款作業 主檔|Bank Repayment Operation Mostly
+kom06|銀行還款明細檔|Bank Repayment Operation Statement
+kom07|銀行額度異動檔|Bank Repayment Operation Change File
+kpobak|庫存採購自定義報表-紙張設定|Stock Purchases User-defined Statement-sheet Set
+kpooff|庫存採購自定義報表-紙張偏移量|Stock Purchases User-defined Statement-sheet Offset
+kpotab|庫存採購自定義報表-頁面元件定義|Stock Purchases User-defined Statement-Page Component Define
+kqm09|記錄權利金及退%數設定資料|Record Right Cost And Return %number Setting Data
+kqm11|銷貨單加掛檔|Sales Order Add
+kqm12|銷貨、報價加掛檔|Sales, Quote Add
+kqm15|產品計算資料|Item Calculate Data
+kqm16|產品部門公司設定檔|Item Department Company Set
+kqm17|部門項目設定檔|Department Item Set
+kqm18|產品採購預計交期|Item Calculate Data
+kqm19|產品型錄權限設定檔|Item Catalog Privilege Set
+kqm20|產品最後入庫日期|Item The End In-storage Date
+kqm21|公司產品價格設定檔|Company Item Price Set
+kqm22|生管報價單資料|PC Quotation Data
+kqm23|生管報價單資料二|PC Quotation Data 2
+kqm24|型鋁估算明細記錄檔|Aluminum Estimated Detail Record
+kqm25|產品子描述|Item Sub Description
+kqm26|客戶追加備註|Customer Add Remark
+kquotbak|庫存報價自定義報表-紙張設定|Stock Quote User-defined Statement-sheet Setting
+kquotoff|庫存報價自定義報表-紙張偏移量|Stock Quote User-defined Statement-sheet Offset
+kquottab|庫存報價自定義報表-頁面元件定義|Stock Quote User-defined Statement-Page Component Define
+kscbak|庫存訂單自定義報表-紙張偏移量|Stock Order User-defined Statement-sheet Setting
+kscoff|庫存訂單自定義報表-紙張設定|Stock Order User-defined Statement-sheet Offset
+ksctab|庫存訂單自定義報表-頁面元件定義|Stock Order User-defined Statement-Page Component Define
+ksm01|關帳作業|Close Operation
+ksm02|銷貨/報價/訂單 利潤分析|Sales/Quote/Order Profit Analysis
+ksm03|批次成本 : 進貨成本待沖資料|Job Costing:I.B. Deliv. Cost Unclear Data
+ksm04|批次成本沖銷明細|Job Costing Offset Detail
+ksm05|機械序號/批號異動明細|Machine Series No./Lots No. Detail
+ksm07|計價單位資料維護|Calculate Price Unit Data Maintenance
+ksm08|計價單位的毛量明細輸入|Calculate Price Unit Mainly Detail Input
+ksm09|產品包裝明細資料|Item Packing Detail Data
+ksm10|五通代碼設定檔|Five Code Set
+ksm11|訂單產品對應五通代碼檔|Order Item Corresponding Five Code
+ksm12|依公司＋日期關帳設定檔|By Company + Date Close Set
+ktm01|維修基本設定檔|Repair Basic Set
+ktm02|公司機件基本資料檔|Company Machine Basic Data
+ktm03|公司機件技術資料檔|Company Machine Tec.Info
+ktm04|公司機件技術附件/回報檔|Company Machine Tec.Info Attachment/Reward
+ktm05|維修機件之配件設定檔|Repair Machine Fittings Set
+ktm06|維修合約主檔|Repair Contract Mostly
+ktm07|維修合約機件檔|Repair Contract Machine
+ktm08|維修合約/回報單 之計費方式|Repair Contract/Reward Cost Method
+ktm09|維修派工主檔|Repair Work-assign Mostly
+ktm10|維修回報主檔|Repair Reward Mostly
+ktm11|維修回報派工明細檔|Repair Reward Work-assign Statement
+ktm12|更換零件明細檔|Change Component Statement
+kum01|參數設定|Parameter Set
+kum02|訂單業績申報主檔|Order Achievement Report Mostly
+kum03|訂單業績種類統計|Order Achievement Type Stat.
+kum04|訂單用戶追加點數明細|Order User Add Number Detail
+kum05|調整成本/其它費用|Adjustment Cost/Other Expense
+kum06|業績申報人員明細|Achievement Report User Detail
+kum07|業績獎金發放檔|Achievement Bonus Provide
+kum08|獎金級別金額設定|Bonus Level Amount Set
+kum09|獎金級別適用人員|Bonus Level Apply To People
+kzm07|電射加工試算檔|Electric Process Trial
+kzm08|佈告欄|Bulletin
+kzm09|模具股東持股比例設定|Mold Dormantpartner Percentage Set
+kzm16|樣式 設定|MODEL Setting
+kzm17|產品會計科目設定|Item Bursar Acct. Set
+kzm18|客戶等級折數比例設定檔|Customer Level Qty Credited Percent Set
+kzm20|POS讀入記錄檔|POS Readin Record
+kzm21|工務代號設定檔|Project No. Set
+kzm22|工務回報主檔|Project Reward Main
+kzm23|工務回報明細檔|Project Reward Detail
+net1|財務自定義報表設定|Finance User-defined Statement Set
+netbak|網絡設定自定義報表-紙張設定|Net Set User-defined Statement - Sheet Setting
+netoff|網絡設定自定義報表-紙張偏移量|Net Set User-defined Statement - Sheet Offset
+nettab|網絡設定自定義報表-頁面元件定義|Net Set User-defined Statement - Page Component Define
+notetype|帳款別|Account Type
+oam01|群組檔|Group
+oam02|用戶所屬群組|User Attributive Group
+oam03|用戶對於行程總覽的控管|User About Schedule EIS Cont
+obm01|佈告欄|Annunciate Field
+obm02|佈告欄瀏覽對象|Annunciate Field Browse Object
+obm03|佈告欄/交會辦附件檔|Annunciate Field/TASK Attachment File
+obm04|佈告欄瀏覽記錄|Annunciate Field Browse Record
+obm05|佈告欄基本資料發佈對象|Bulletin Basic Data Issuance Object
+ocm01|交會辦主檔|TASK Mostly
+ocm02|交會辦對象|TASK Object
+ocm03|交會辦進度回報|TASK Scheudle Reward
+ocm04|交會辦回報說明附件檔|TASK Reward Explanation Attachment
+ocm05|交會辦瀏覽記錄|TASK Browse Record
+odm01|預排行程主檔|Uncertain Schedule Mostly
+odm02|預排行程的更多洽談內容檔|Uncertain Schedule More Negotiation Content
+pam01|產品基本資料:生管加掛檔|Item Basic Data:PC Add
+pam02|產品製造說明/品管要求|Item Manufacture Explanation/QM Requirement
+pam03|工作中心/加工廠產能設定|Work Center/Fab Cap Setup
+pam04|模具資料檔|Mold Data
+pam05|成本估算主檔|Cost Est. Mostly
+pam06|成本估算作業尾階材料明細|Cost Est. Operation -the Least Level Material Detail
+pam07|成本估算:製程、加工途程明細|Cost Est. : Process, Process WIP Detail
+pam08|客戶產品包材BOM檔|Cust_Item Packing BOM File
+pam09|用料順序資料|Material Consumed Sequence Data
+pam10|公司別產品BOM子件tdm05|Company Item BOM Parts Tdm05
+pam11|公司別製品多階製程設定檔psm04|Company FG M-Lv Route Setting Psm04
+pam12|公司製品補充檔|Company FG Add
+pam13|製程設定補充檔|Process Setting Add
+pam14|產品BOM版號設定|Item BOM Prescription No. Set
+pbm01|生產需求/計劃單主檔|Itemion Demand/Planned Order Mostly
+pbm02|生產需求/計劃單明細|Itemion Demand/Planned Order Detail
+pbm03|生產需求/計劃安排表|Itemion Demand/Plan Table
+pbm04|生管單據＋產品 多行描述檔|PC Doc. + Item Long Text
+pbm05|生管單據之備註檔|PC Doc. Remark
+pbm06|生產排箵明細檔|By Production Schedule Detail
+pbm07|生產排程主檔(記錄選項條件)|By Production Schedule Mostly(Record Select-option)
+pbm08|排程之併單明細檔|Schedule Comb.doc Statement
+pbm09|請購單明細|PR Doc. Detail
+pbm10|物料需求主檔|Material Demand Mostly
+pbm11|物料需求待製品明細檔|Material Demand Stay FG Statement
+pbm12|物料需求待製品產品合併檔|Material Demand Stay FG Iterm Merge
+pbm14|生產需求/計劃單託工/製程修改|Itemion Demand/Plan Order Sub-Contract/Process Modify
+pcm01|工單(指製令、託工單)主檔二|WO (shop,sub-contract) Mostly 2
+pcm02|工單(指製令、託工單)物料檔|WO(shop,sub-contract)Material
+pcm03|途程移轉明細檔|WIP Trf Statement
+pcm04|補料/請料單主檔|Resupply/PR Mostly
+pcm05|補料/請料單明細檔|Resupply/PR Statement
+pcm06|託工單加扣款明細檔|Sub-contract Plus/Dedu Statement
+pdm01|變更通知單主檔|Change Order Mostly
+pdm02|變更通知單產品明細|Change Order Item Detail
+pdm03|變更通知單產品明細(二)|Change Order Item Detail 2
+pdm04|變更通知單備註檔|Change Order Remark
+pdm05|變更通知單產品多行描述檔|Change Order Item Long Text
+pdm06|變更通知單產品安排明細檔|Change Order Item Plan Detail
+pdm07|變更通知單－加扣款檔|Change Order-Plus/Dedu
+pdm08|組合關係變更檔|Constitution Change
+pem01|M入庫/T退修/H領、I退料主檔|M In-storage/T Return Repair/H Pick, I Return Mostly
+pem01_MutiItem_CheckStock|生管pem01資料多筆產品檢查庫存資料檔|PC Pem01 Data Multiple Entries Of Produc Check Stock Data
+pem02|M入庫、T退修單明細檔|M In-storage/T Rework Order Statement
+pem03|託工入庫/退修補充檔 (帳款)|Sub-Contract In-wareh'/Rework Add (Account)
+pem04|入庫不良品分析|In-storage Defective Parts FA
+pem05|收料/驗貨品管主檔|GR/Check Qc Mostly
+pem06|收料/驗貨明細檔|GR/Check Qc Statement
+pem07|品管(收驗單明細產品)資料檔|QC(Insp.Instr Detail Item)Data
+pem08|品管(收驗單明細產品)檢驗報告資料檔|QC(Insp.instr Detail Item)Inspection Report Data
+pem09|品管(收驗單明細產品)檢驗項目每筆抽驗產品結果紀錄檔|QC(Insp.instr Detail Item)Inspection Preject Each Check Item Result
+pfm01|途程庫存檔|WIP Stock
+pfm02|途程庫存調整主檔 (含可使用量)|WIP Stock Change Mostly (include May Use Quantity)
+pfm03|途程庫存異動明細(含可使用量)|WIP Stock Change Statement(include May Use Quantity)
+pfm04|途程庫存異動統計檔(含可用量)|WIP Stock Change Statistical (may Use Quantity)
+pfm05|途程庫存盤點/可用量盤點/可用量調撥主檔|WIP Stock Adjust/may Use Quantity Adjust/may Use Quantity Adj/Put Mostly
+pfm06|途程庫存盤點/可用量盤點/可用量調撥明細檔|WIP Stock Adjust/may Use Quantity Adjust/may Use Quantity Adj/Put Statement
+pg1r06_Bom|直接原料產品樹|Direct Raw Material Item Tree
+pg1r06_Master|直接原料主檔|Direct Raw Material Mostly
+pgm01|各月製造相關成本費用|Each Month Production Related Cost Expense
+pgm02|產品月加權成本|Item Month Weighted Cost
+pgm03|部門各月製造相關成本費用|Dept. Each Month Manufacture Related Cost Expense
+pgm04|部門產品成本核算統計|Dept. Item Cost Calculate Statistical
+pgm05|產品相關成本費用|Item Related Cost Expense
+pgm06|入庫產品相關耗用|In-storage Item Related Expense
+plm01|工作中心每日資源計劃|Work Center Each Day Resource Plan
+plm02|工作中心每日機器設備資源|Work Center Each Day Machine Resource
+plm03|工作中心每日人力資源|Work Center Each Day Manpower Resource Plan
+plm04|能力計畫 派工凍結時間紀錄檔|Capacity Plan Assigning Freeze Time Record
+plm05|工作日報|Daily Report
+plm06|工作日報工單完工明細檔|Daily Report WO Finish Statement
+plm07|工作日報-異常工時/除外工時分析|Daily Report-Abnormal Working Hour/exception Working Hour Analysis
+plm08|工作日報─人力投入明細|Daily Report-manpower Investing Detail
+plm09|工作日報─人力投入明細─完工明細|Daily Report-manpower Investing Detail-Finish Detail
+plm10|工作日報─設備投入明細|Daily Report-Equipment Investing Detail
+plm11|工單派工紀錄單|WO Assigning Record File
+plm12|資源分配明細紀錄|Resource Share Detail Record
+plm13|派工工時調整相關單據時間提示訊息紀錄檔|Assigning Working Hour Adjust Related Docs. Time Prompt Message Record
+plm14|派工未完工工時凍結紀錄|Assigning Not Finish Working Hour Freeze Record
+plm15|工作日報--單筆產品使用資源紀錄檔|Daily Report--sgl Prod. Use Resource Record
+plm16|工作日報--報工使用模具紀錄檔|Daily Report--Confirm Use Mold Record
+plm17|供給需求模擬主檔|Supply Demand Simulation Mostly
+plm18|供給需求模擬|Supply Demand Simulation
+plm19|供給需求模擬展開結構表|Supply Demand Simulation Expanded Construction Table
+plm20|工作中心其他資料設定|Work Center Other Data Setting
+pmm01|生產單位＋製品 生產統計檔|Itemion Unit + Item Itemion Statistical
+pmm02|生產單位生產統計檔|Itemion Unit Itemion Statistical
+pmm03|製品生產統計檔|Item Itemion Statistical
+pmm04|品管(收驗單明細產品)統計檔|QC(Insp.instr Detail Item)Statistical
+pnm01|模具異動單別設定|Mold Change Type Set
+pnm02|模具項目檔|Mold Item
+pnm03|模具編號檔|Mold No
+pnm04|製程所需模具設定|Process Demand Mold Setting
+pnm05|模具請購/訂購主檔|Mold Requisition/Order Mostly
+pnm06|模具請購/訂購明細檔|Mold Requisition/Order Statement
+pnm07|模具請購/訂購明細檔|Mold Requisition/Order Statement
+pnm08|模具相關單據之備註檔|Mold Related Docs. Remark
+pnm09|模具相關單據加扣款|Mold Related Docs. Plus/Dedu
+pobak|採購自定義報表-紙張設定|Purchase User-defined Statement-sheet Setting
+pom01|上層分類編碼設定檔(母)|Upper Classify Code Setting File(mother)
+pom02|次分類(下一層)編碼設定檔(子)|Sub-classify(next Level)Code Set (Parts)
+pooff|採購自定義報表-紙張偏移量|Purchase User-defined Statement-sheet Offset
+potab|採購自定義報表-頁面元件定義|Purchase User-defined Statement-Page Component Define
+ppgm01|生管SQL各月製造相關成本費用|PC SQL Manufacture Related Cost Expense Of Each Month
+ppgm02|公司幣月加權成本(含途程品)|Company Currency Month Weighted Cost(Include WIP GooDs)
+ppgm03|生管SQL部門各月製造相關成本費用|PC SQL Department Manufacture Related Cost Expense Of Each Month
+ppgm04|生管SQL部門產品成本核算統計|PC SQL Department Item Cost Accounting Statistical
+pq3i16_detail|直接原料&單位成本調整明細檔|Direct Raw Material & Unit Cost Adjust Detail
+pq3i16_master|直接原料&單位成本調整主檔|Direct Raw Material & Unit Cost Adjust Mostly
+pq3i30_01|永續盤存財務連線修改|Perpetual Inventory Finance Pipeline Modified
+pq3i30_02|增加訂單變更拋轉追蹤管理|Add Order Change Migrated Pursue Management
+pqm01|產品顏色配比資料|Item Match Colors Data
+pqm02|產品顏色配比資料|Item Match Colors Data
+pqm03|單據表頭  裁切 包裝表頭檔|Docs. Table Heading Trim Packing Table Head
+pqm04|單據表頭  裁切 包裝表身檔|Docs. Table Heading Trim Packing Table Body
+pqm05|單據包裝表身內包明細檔|Docs Packing Table Body Included Package Statement
+pqm06|物料使用模具檔|Material Use Mold
+pqm07|製品之物料使用模具檔|Item For Material Use Mold
+pqm08|製品之物料使用模具檔|Item For Material Use Mold
+pqm09|裁切模擬延伸檔案|Trim Simulation Extend
+pqm10|裁切模擬延伸檔案|Trim Simulation Extend
+pqm13|績效獎金計算作業-【生產績效】檔|Performance Bonus Calcu. Operation[Itemion Performance]
+pqm14|績效獎金計算作業-【品質評價】檔|Performance Bonus Calcu. Operation[Quality Evaluate]
+pqm15|品質評價獎金系數設定檔|Quality Evaluate Bonus Modulus Set
+pqm16|績效獎金計算作業-【特殊貢獻獎金】檔|Performance Bonus Calculating Operation[specilize Proffer]
+pqm17|各員工特殊貢獻獎金明細檔(其他加項--'1' 其他減項--'2')|Every Staff Specilize Proffer Statement(Other Add Item-'1' Other Minus Item-'2')
+pqm18|各員工特殊貢獻獎金明細獎勵項目檔|Every Staff Specilize Proffer Bonus Detail Hortation Items
+pqm20|廠商評核統計檔|Supplier Audit Statistical
+pqm21|評分項目檔|Grade Items
+pqm22|評分設定檔|Grade Set
+pqm23|廠商考核等級檔|Supplier Check Level
+pqm26|生管最高託工單價設定|PC The Max Sub-Contract Unit Price Set
+pqm27|工作日報 單筆報工plm06多站工時明細檔|Daily Report Single Conf. Plm06 Multi Station Working Hour Statement
+pqm28|工作中心隸屬群組設定|Work Center Subjection Group Set
+psm01|工作中心/途程碼設定|Work Center/WIP Code Set
+psm02|設備基本資料|Equipment Basic Data
+psm03|工作中心、產品:使用設備明細|Work Center, Item:borrow Equipment Detail
+psm04|途程編號、產品:製程明細|WIP No, Item: Process Detail
+psm05|廠別基本資料設定|Supplier Type Basic Data Set
+psm06|廠別所轄倉庫、工作中心設定|Supplier Type That Rule, Work Center Set
+psm07|公司別預設供應商/生產單位檔|Company Type Default Supplier/Itemion Unit File
+psm08|託工成本標準價設定|Sub-Contract Cost Standard Price Set
+psm09|品管標準值設定檔|QC Standard Data Set
+psm10|品管代碼表|QC Code Table
+psm11|品管AQL抽檢標準主檔|QC AQL Audit Check Standard Mostly
+psm12|品管AQL抽檢標準明細檔|QC AQL Audit Check Standard Statement
+psm13|品管檢驗項目主檔|QC Inspection Item Mostly
+psm14|品管檢驗項目明細檔|QC Inspection Item Statement
+psm15|品管廠商評核標準規範檔|QC Supplier Vendor Evaluation SOP
+psm16|產品BOM設計變更檔|Item BOM Design Change
+psm17|產品BOM設計變更明細檔|Item BOM Design Change Statement
+psm18|產品供應商/託工廠變更明細檔|Item Supplier/Sub-Contract Change Detail
+psm19|製品自製途程/託外途程變更|FG Int. WIP/Ext WIP Change
+psm20|製品成本估算檔|FG Price Est.
+psm21|追蹤途程設定|Track WIP Set
+psm22|採購店面(pq3i18生產進度追蹤第二版)|Purchases Shop(pq3i18 Itemion Scheudle Track NO.2)
+psm26|抓取資料判斷碼開窗設定|Snatch At Data Judgement Code Cnt Set
+ptem04|追加單據產品描述檔|Add Doc. Item Description
+ptgm01|追加採購資料主檔|Add Purchases Data Mostly
+ptgm02|追加採購資料明細檔|Add Purchases Data Detail
+qam03|客戶追加程式安裝設定檔|Customer Add Program Setup Set
+qam04|客戶追加程式資料檔|Customer Add Program  Data
+qam06|物件價格申請作業|Thing Price Apply Operation
+qam07|進口配貨作業|Import Fittings Operation
+qam08|重新註冊申請作業表頭|Re-register Apply Operation Table Heading
+qam09|重新註冊申請作業表身|Re-register Apply Operation Table Body
+qam10|申請原因檔|Apply Cause
+qam15|出入庫表主檔|Out/In Stock Main Data
+qam16|放行單表頭檔|Let Go Order Table Head
+qam17|放行單表身檔|Let Go Order Table Body
+qam19|免稅品設定檔/扣折還原設定|Free Goods Set File/Discount Restore Setting
+qam20|TO EXCEL 格式表頭檔|TO EXCEL Format Table Head
+qam21|TO EXCEL 格式明細檔|TO EXCEL Format Statement
+qam22|交期回復作業明細檔|Delivery Restore Operation Detail
+qam23|W/S組裝檔|W/S Assembly
+qam24|W/S備註檔|W/S Remark
+qam25|W/S表頭檔|W/S Table Head
+qam26|W/S明細檔|W/S Detail
+qbm02|小數位數設定檔|Decimal Point Set
+qbm03|採購單匯入資料記錄檔|Purchases Order Import Data Record
+qbm04|用戶授權設定檔|User Authorized Set
+qbm05|公司資料擴展檔|Company Expansion
+qbm06|幣別小數位數設定檔|Decimal Point Set
+qbm11|產品模具記錄檔|Item Mold Record
+qbm12|訂單附件記錄檔|Order Attachment Record
+qdm01|競賣主檔|Sale Mostly
+qdm02|追加競賣明細檔|Sale Statement
+qhm02|配送系統異動明細件數檔|Send System Change Detail Piece
+qhm03|儲位有效日期資料檔|Bin No. Effective Date Data
+qhm05|安全存量計算主檔|The Safety Stock Calculating Operation
+qhm06|安全存量計算明細檔|The Safety Stock Calculating Operation Detail
+qhm07|進貨單拋轉貨單產品檔|I.B. Deliv. Order Migrated SO Item
+qhm08|進貨單配倉產品檔|I.B. Deliv. Order Match Warehouse Item
+qhm09|進貨單配倉倉庫檔|I.B. Deliv. Order Match Warehouse
+qhm10|業務員負責倉庫|Salesman In Charge Warehouse
+qhm11|用戶運行程式記錄檔|User Run Program Record
+qhm12|用戶運行程式設定檔|User Run Program Set
+qhm13|出貨地點回寫記錄檔|Invoice Adress Write Back Record
+qhm14|船務表頭檔|Shipping Table Head
+qhm15|備註記錄檔|Remark Record
+qim01|產品輸入順序加掛檔|Item Input Sequence Add
+quotbak|庫存報價自定義報表-紙張偏移量|Stock Quote User-defined Statement-sheet Offset
+quotoff|庫存報價自定義報表-紙張設定|Stock Quote User-defined Statement-sheet Setting
+quottab|庫存報價自定義報表-頁面元件定義|Stock Quote User-defined Statement-Page Component Define
+qym01|滑軌異動別設定檔|Slide Change Type Setting
+qym02|滑軌異動主檔|Slide Change Mostly
+qym03|滑軌異動明細檔|Slide Change Statement
+qym04|滑軌長度切換主檔|Slide Length Switch Mostly
+qym05|滑軌切換原件檔|Slide Switch Original
+qym06|滑軌切換零件檔|Slide Switch Component
+qym07|滑軌月異動檔|Slide Month Change
+qym08|滑軌產品檔|Slide Item
+sam01|公司組織架構檔|Company Organizational Structure
+sam02|人事項目內容設定|Personnel Item Content Set
+sam03|人事代碼設定|Personnel Code Setting
+sam04|人事異動別設定|Personnel Change Type Set
+sam05|人事薪資備註檔|Personnel Salary Remark File
+sbm01|人事基本資料|Personnel Basic Data
+sbm02|人事-證照學歷經驗檔|Personnel-According To Edu. Experience File
+sbm03|人事-家庭成員/輔養親屬/眷口|Personnel-family Member/relative2foster/Family Dependents
+sbm04|人事-備註摘要檔|Personnel-Remark Summary File
+sbm05|員工考勤設定-排/代班資料|Stuff Attendance Set - Arrange/Replace Shift Data
+sbm06|員工薪資項目設定|Stuff Salary Item Set
+sbm07|人事異動記錄檔|Personnel Change Record
+sbm08|員工調薪記錄檔|Staff Salary Adjust Record
+sbm09|人才庫資料|Talent Data
+sbm11|人事異動主檔|Personnel Change Mostly
+sbm12|人事異動明細檔|Personnel Change Statement
+sbm13|人力資源備註|Manpower Resource Remark
+sbm14|大陸員工薪資設定|MainLand Staff Salary Setting
+sbm15|員工財務部門異動紀錄|Finance Dep Change Record
+scbak|訂單自定義報表-紙張設定|Order User-defined Statement- Sheet Setting
+scm01|班別設定檔|Shift_Type Setting
+scm02|班別休息/加班時段設定檔|Shift_Type Rest/Over Interval Setting
+scm03|假別設定檔|Leave_Type Setting
+scm04|公司考勤設定主檔|Company Attendance Setting Mostly
+scm05|員工特休天數設定檔|Staff Special Rest Days Setting
+scm06|加班種類|Overtime Type
+scmenu1|頁面設定|Page Setting
+scmenu2|架構圖設定|Structure Chart Set
+scmenu3|標準頁面捷徑設定|Standard Page Shortcut Set
+scmenu4|自定義頁面捷徑設定|User-defined Page Shortcut Set
+scmenu5|存儲文字檔對應的圖片|Storage Word File Corresponding Chart
+scoff|訂單自定義報表-紙張偏移量|Order User-defined Statement-sheet Offset
+sctab|訂單自定義報表-頁面元件定義|Order User-defined Statement-Page Component Define
+sdayduty|薪資公司班別上班日程設定|Salary Company Shift Type Clock_In Agenda Set
+sdm01|員工輪值/輪休排班檔|Staff Rotate/Rotate Leave Shift
+sdm02|統一調排班主檔|National Mix Shift Mostly
+sdm03|統一調排班員工明細檔|National Mix Shift Statement
+sdm04|員工出勤記錄明細檔|Staff Attendence Record Statement
+sdm05|卡鐘/薪轉格式設定主檔|Card Bell/Salary Transform Format Set Mostly
+sdm06|卡鐘/薪轉格式設定欄位對照檔|Card Bell/Salary Transform Format Set Field Collate
+sdm07|員工輪值/輪休排班月檔|Staff Rotate/Rotate Leave Shift Month
+sdm08|請假/公出/出差/加班申請|Leaving/Official Out/Away Business Apply
+sdm09|加班(集中)申請之加班人員明細檔|Overtime(centralize)Apply Overtime Person Statement
+sdm10|出勤補正單表頭檔|Attendence Certificated Paper Table Head
+sdm11|出勤補正單表身檔|Attendence Certificated Paper Table Bady
+sem01|數值級數設定檔|Value Series Setting
+sem02|勞保費分擔金額設定|LaborInsur. Fee Share In Amount Set
+sem03|薪資項目設定|Salary_Item Set
+sem04|計件工作項目設定明細檔|Piece Task Title Set Statement
+sem05|計薪發薪方式設定|Calc. Salary Payroll Type Set
+sem06|大陸社保比率設定-主檔|MainLand Social Insurance Rate - Mostly
+sem07|大陸社保比率設定-明細檔|MainLand Social Insurance Rate - Statement
+semaphore|存檔信號燈記錄檔|Save Signal Register Record
+sfm01|薪資/所得/獎金等主檔|Salary/income/bonus...Mostly
+sfm02|員工實發薪資總額檔|Staff Actual Pay Amount
+sfm03|員工實發薪資項目明細|Staff Actual Pay Amount Items Detail
+sfm04|員工加班考勤扣款金額檔|Staff Overtime Attendance Deduct Amount
+sfm05|員工計件明細(輸入)|Staff Piece-Work Detail(Input)
+sfm06|員工計件薪資明細(計算)|Staff Piece-work Salary Detail(calculating)
+sfm07|員工借款還款計劃|Staff Repaying Plan
+sfm08|員工借款實際還款明細|Staff Repaying Amt. Detail
+sfm09|調薪明細檔|Salary Adjust Detail
+sfm10|勞退提撥記錄檔/大陸社保記錄檔|Persion Sends Record File/MainLand Staff Social Insurance Record
+sfm11|大陸員工基數金額設定明細檔|MainLand Staff Base Amt. Set Statement
+sgm01|扣繳憑單主檔|Ded.Docs. Mostly
+sgm02|扣繳憑單明細檔|Ded.Docs. Statement
+sgm03|保費繳納證明主檔|Work/Health Insurance Pay Prover Mostly
+sgm04|保費繳納證明員工檔|Work/Health Insurance Pay Prover Staff
+sgm05|保費繳納證明明細檔|Work/Health Insurance Pay Prover Statement
+shm01|公司日曆檔|Company Calendar
+shm02|常用假日設定檔|Commonly Holidays Setting
+shm03|休息日設定檔|Rest Days Set
+shm04|假日設定表頭檔|Holiday Setting Table Head
+shm05|假日設定表身檔|Holiday Setting Table Body
+smm01|員工考勤統計檔|Staff Attendance Statistical
+smm02|員工薪資統計檔|Staff Salary Statistical
+smm03|人事異動月統計檔|Personnel Change Month Statistical
+spm01|員工基本資料 (暫定) FOR CRP|Staff Basic Data  FOR CRP
+spm02|生管報工薪資項目設定|PC Conf. Salary Item Set
+spm03|生管SQL各月件資費用計算統計|PC SQL Every Month Workpiece Expense Calculate Stat
+spm04|每筆報工的薪資和發薪月份|Each Record Conf. Salary And Pay Salary Month
+spm05|每筆報工的薪資和發薪月份|Each Record Conf. Salary And Pay Salary Month
+spm06|每筆報工的薪資和發薪月份|Each Record Conf. Salary And Pay Salary Month
+spm07|每筆報工的薪資和發薪月份|Each Record Conf. Salary And Pay Salary Month
+spm08|工作中心之員工每日記工效率與加權|The Staff Of Staff Every Day Work Efficiency And Weighted
+spm09|工作中心之員工報工薪資抽％計算|The Staff Of Staff Conf. Salary Take Out % Count
+spm10|工作中心之員工報工薪資相關設定|The Staff Of Staff Conf. Salary Related Set
+sqlupd|數據庫更新紀錄表|Database Update Record Table
+sxm01|公司別系統參數設定|Company Type Set
+sys01|用戶登錄登出信息|User Login Logout Information
+sys02|用戶執行程式信息|User Run Program Information
+sys03|當前在線用戶信息|Now Online User Information
+systable|別單拷貝系統表|Copy From Other Doc. System Table
+tam01|公司基本資料|Company Basic Data
+tam02|公司信號|Company Signature
+tam03|公司部門 for WACCT|Company Dept. For WACCT
+tam04|相關公司|Relative Company
+tam05|用戶資料|User Data
+tam06|用戶操作資料|User Operation Data
+tam07|用戶公司資料|User Company Data
+tam08|流通表|Currency Table
+tam09|流通歷史|Currency History
+tam10|貨物關稅代碼|Freight Tariff Code
+tam11|貨物表|Freight Table
+tam12|代碼表|Code Table
+tam13|價格條件設定|Price Term Setup
+tam14|電話、傳真、Modem、聯絡人|Tel, Fax, Modem, Attn
+tam15|表的代碼|Code Table
+tam16|加工製程代碼設定|Process Process Code Set
+tam17|碼頭/國家/區域|Port/Country/Area
+tam18|用戶讀取資料之權限設定|User Read Data Popedom Set
+tam19|基本資料可閱讀公司權設定|Basic Data Can Read Company Right Set
+tam21|群組操作權限檔|Group Operation Right
+tam22|群組檔|Group
+tam23|用戶所屬群組|User Attributive Group
+tam24|2006版menu桌面預設|2006 Edition Menu Desktop Default
+tam25|海關三旬匯率|Cust. Cert. Three Period Exchange Rate
+tam26|用戶簽名圖檔設定|User Underwrite Picture Setting
+tbm01|客戶基本資料|Customer Basic Data
+tbm02|客戶聯絡人|Customer Attention
+tbm03|客戶銀行資料|Customer Bank Data
+tbm04|客戶交貨地址|Customer Delivery Address
+tbm05|客戶產品大類|Customer Item Catery
+tbm06|客戶船運標記(不再使用)|Cust Shipping Mark (Not Use)
+tbm08|客戶出貨嘜頭|Cust Shipping Mark Code
+tbm09|客戶描述|Customer Remarks
+tbm10|客戶產品資料|Customer Item Data
+tbm11|客戶產品子描述|Customer Item Sub_Desc.
+tbm12|客戶產品 S/P 包裝|Customer Item S/P Packing
+tbm13|潛在客戶資料|Potential Customer Basic
+tbm14|客戶連絡記錄檔|Customer Contact Record
+tbm15|更多洽談內容|More Negotiation Content
+tbm16|業務行程 : 公司推銷產品|Sales Journey:Company Marketing Item
+tbm17|業務行程 : 競爭對手產品|Sales Journey:Items Of Competitor
+tbm18|業務行程 : 客戶原有產品|Sales Journey:Customer Inhere Item
+tbm19|特定客戶資料設定檔 ta2i06|Appointed Customer Data Set Ta2i06
+tbm20|客戶價格設定表頭檔|Customer Price Set Table Head
+tbm21|客戶價格設定明細檔|Customer Price Set Statement
+tbm22|客戶產品補充說明檔|Customer Price Set Add Help
+tbm23|業務行程狀況說明檔|Customer Price Set Status Explanation
+tcm01|供應商基本資料|Supplier Basic Data
+tcm02|供應商聯絡人|Supplier Attention
+tcm03|供應商備注|Supplier Remarks
+tcm04|供應商產品大類|Supplier Item Catery
+tcm05|供應商產品|Supplier Item
+tcm06|加工廠託工費用明細|Process Supplier Sub-Contract Expense Detail
+tcm07|供應商銀行資料|Supplier Bank Data
+tcm08|詢價主要資料|Inquiry Master Data
+tcm09|詢價產品明細檔|Inquiry Item Statement
+tcm10|詢價需求單表頭|Inquiry Demand Note Page Head
+tcm11|紙箱/管料估價記錄|Paper Box/data Value Record
+tcm12|產品大類公式維護檔|Item Category Formula Maintenance
+tcm13|供應商產品詳細描述|Supplier Item Detail Description
+tcm14|供應商付款方式|Supplier Payment Type
+tcm15|客戶-供應商 產品|Cust-Supplier Item
+tdm01|產品基本資料|Item Basic Data
+tdm02|產品子描述|Item Sub_Description
+tdm03|產品 自定欄１～７|Item User-defined Column 1~7
+tdm04|產品 自定欄８|Item User-defined Column 8
+tdm05|產品組合關係|Item Assembly
+tdm06|產品贈品配件資料|Item Free Gift/Spare Parts
+tdm07|產品成本比例資料|Item Cost Breakdown
+tdm08|產品包裝資料|Item S/P Packing
+tdm09|產品價格等級明細設定|Item Price Level Detail Setting
+tdm10|促銷價格設定－主檔|Sales Promotion Price Set-Master
+tdm11|促銷價格設定－明細檔|Sales Promotion Price Set-Detail
+tdm12|產品大類描述|Item Catery Desc
+tdm13|產品大類子描述|Item Catery Sub_Desc.
+tdm14|產品供應商包裝|Item Supplier Packing
+tdm15|產品資料 － 生產、其他加掛設定|Item Data - Itemion, Other Add Set
+tdm17|產品－其他加掛明細設定|Item - Other Add Detail Set
+tdm18|產品－其他加掛明細設定|Item - Other Add Detail Set
+tdm19|產品－其他加掛明細設定|Item - Other Add Detail Set
+tdm21|開發信件主檔|Promotion Letter Master
+tdm22|開發信件明細檔|Promotion Letter Detail
+tdm23|索樣基本資料|Sample Request Master Data
+tdm24|索樣產品資料|Sample Request Detail Data
+tdm25|樣品發票基本資料主檔|Sample Invoice -Master
+tdm26|索樣產品資料明細檔|Sample Invoice -Detail
+tem01|報價單主檔|Quotation -Master
+tem01_vir|虛擬報價|Quotation Virtual
+tem02|報價產品資料|Quotation Item Data
+tem02_vir|虛擬報價產品資料|Quotation Item Data Virtual
+tem03|原始單據備註|Document Remarks File
+tem04|產品多行描述|Item Sub_Description
+tem05|報價、訂單 產品組合|Quotation, S/C Item Assembly
+tem06|報價、訂單 產品成本比例|Quotation, S/C Item Cost Breakdown
+tem07|加扣款|Plus/Dedu.
+tem08|報價、訂單、船運 利潤分析|Quotation, S/C, Shipping Profit Analysis
+tem09|文件修改記錄＆說明|File Modify Record & Explanation
+tem10|報價產品贈品配件|Quotation Item Free Gift/Spare Parts
+tem11|客戶加掛功能之加扣款|Customer Add Function Plus/Dedu
+tem12|客戶加掛功能之備註檔|Customer Add Function Remark
+tem13|單據產品價格加掛檔|Paper Item Price Add
+tem14|其他收支管理主檔|Other Income And Expenses Management Mostly
+tem15|其他收支管理單據明細檔|Other Income And Expenses Management Docs. Detail
+tem16|其他收支管理憑證記錄檔|Other Income And Expenses Management Docs. Record
+tem17|加扣款 加掛檔  WEB0605000238|Plus/Dedu. Add WEB0605000238
+tfm01|訂單主檔|S/C -Master
+tfm02|訂單產品資料|S/C Item Data
+tfm03|產品分批資料|S/C Item Shipping Schedule
+tfm04|訂單出貨排程|S/C Shipping Schedule
+tfm05|訂單選擇採購單|S/C Item Select P/O
+tfm09|產品與報關合同規格對應表|Item And Apply To Customs Contract Specification Corresponding Table
+tfm10|大陸報關合同主檔|MainLand Apply To Customs Contract Mostly
+tfm11|報關合同規格數量明細檔|Cust.cont. Specification Quantity Statement
+tfm12|報關合同規格沖銷明細檔|Cust.cont. Size Offset Statement
+tgm01|採購單基本資料|P/O Master Data
+tgm02|採購單產品資料|P/O Item Data
+tgm03|採購單產品分批|P/O Item Shipping Schedule
+tgm04|採購單排程主檔|P/O Shipping Schedule
+tgm05|采購單明細合計|P/O Detail Payed
+tgm06|採購建議拋轉主檔|P/O Advice Migrated Mostly
+tgm07|採購建議拋轉明細檔|P/O Advice Migrated Statement
+tgm08|採購建議已分配明細|P/O Advice Reserved Detail
+tgm09|採購單拋轉S/C 記錄|P/O Migrated S/C Record
+thm01|出貨基本資料|Shipping Master Data
+thm02|訂單出貨資料|Shipping S/C Data
+thm03|產品包裝資料|Packing Item Date
+thm04|出貨產品資料|Invoice Item Date
+thm05|出貨產品供應商成本資料|Invoice Item Supplier Cost
+thm06|出貨運送標記|Invoice Shipping Mark
+thm07|出貨產品子描述|Invoice Item Sub_Desc
+thm08|其他費用|Shipping Extra Charge
+thm09|出貨通知給供應商基本資料|Shipping Advice To Supplier
+thm10|出貨通知產品資料|Shjpping Advice To Supplier
+thm12|出貨產品利潤|Invoice Item Profit
+tim01|信用狀基本資料|L/C Basic Data
+tim02|信用狀的封面|L/C Covering
+tim03|信用狀特殊說明|L/C Special Instruction
+tim04|信用狀分配訂單產品資料|L/C Allocate S/C Data
+tim05|信用狀押匯資料|L/C Netiation Data
+tjm01|索賠資料主檔|Claim--Master Data
+tjm02|索賠產品明細檔|Claim Detail Data
+tlm01|客戶帳款資料|Customer Account Data
+tlm02|客戶帳款已開發票資料|Customer Account Already Open Invoice Data
+tlm03|客戶收款沖帳主檔|Customer Receipts Offset Mostly
+tlm04|客戶收款沖帳-票據明細|Customer Receipts Offset-Note Detail
+tlm05|客戶收款沖帳-其他匯款|Customer Receipts Offset-other Remit
+tlm06|客戶收款沖帳明細檔|Customer Receipts Offset Detail Data
+tlm07|廠商帳款資料|Supplier Account Data
+tlm08|廠商帳款收到發票資料|Supplier Account Receipts Invoice Data
+tlm09|廠商付款沖帳主檔|Supplier Payment Offset Mostly File
+tlm10|廠商付款沖帳-票據明細|Supplier Payment Offset-Note Detail
+tlm11|廠商付款沖帳-其他匯款|Supplier Payment Offset-other Remit
+tlm12|廠商付款沖帳明細檔|Supplier Payment Offset Detail Data
+tlm13|客戶收款掛帳明細檔|Supplier Payment Add Detail Data
+tlm14|廠商付款掛帳明細檔|Supplier Payment Add Detail
+tlm15|供應商應付帳款 T 帳款明細|Supplier Acct. Payable T Account Detail
+tlm17|依產品別沖帳主檔|By Product Type Offset Mostly
+tlm18|依產品別沖帳明細主檔|By Product Type Offset Detail Mostly
+tlm19|匯款主檔|Remit Mostly
+tlm20|匯款明細檔|Remit Detail
+tmm01|用戶日志檔|User Log
+tmm01_log|用戶日志檔二|User Log 2
+tmm02|公司統計檔|Company Statistical
+tmm03|產品統計檔|Item Statistical
+tmm04|供應商+產品統計檔|Customer + Item Statistical
+tmm05|業務員 + 產品統計檔|Satff + Item Statistical
+tmm06|供應商 + 產品 統計檔|Supplier + Item Statistical
+tmm07|客戶統計檔|Customer Statistical
+tmm08|業務員統計檔|Staff Statistical
+tmm09|供應商統計檔|Supplier Statistical
+tmm10|客戶收款沖帳統計檔|Customer Receipts Offset Statistical
+tmm11|多層欄位統計 表頭檔|Multilayer Field Statistical Table Heading
+tmm12|多層欄位統計 統計檔|Multilayer Field Statistical
+tmm13|公司+產品 統計檔|Company + Item Statistical
+tmm14|公司+客戶 統計檔|Company + Customer Statistical
+tmm15|公司+業務員 統計檔|Company + Staff Statistical
+tmm16|公司+供應商 統計檔|Company + Supplier Statistical
+tmm17|統計分析條件設定檔|Statistic Analysis Condition Set
+tmm18|統計分析顯示設定檔|Statistic Analysis Display Set
+tmm19|統計分析項目設定檔|Statistic Analysis Item Set
+tmm20|統計分析欄位設定檔|Statistic Analysis Field Set
+tmm21|統計分析用戶設定檔|Statistic Analysis User Set
+tmm22|統計分析公司產品大類檔|Company + Item Category Statistical
+tmm23|Company + Item MODEL# + CUSTOMER 統計檔|Company + Item MODEL# + Customer Statistical
+tmp|tmp(臨時表)|tmp(Temporary Table)
+tnm01|歷史資料|History Data
+tnm02|每種單據的最後一筆交易|Each Paper The Last One Trade
+tnm04|託工歷史檔|Sub-Contract History Data
+toexcel1|trade98 拋轉 Excel檔名|Trade98 Throw Excel FileName
+toexcel2|trade98 拋轉 Excel|Trade98 Throw Excel
+toexcel3|trade98.tem04拋Excel|Trade98.tem04 Throw Excel
+toexcel4|trade98.tem06拋Excel|Trade98.tem06 Throw Excel
+tpm03|出貨拋銷/進貨單查詢|Invoice Migrated SO/I.B. Deliv. Order Query
+tpm04|拋託工單查詢|Migrated Sub-contract Query
+tq3r67|規格項目檔|Spec Item
+tqm01|催貨單號主檔|Presses For Delivery Of Goods No Mostly
+tqm02|催貨單 S/C|Presses For Delivery Of Goods No S/C
+tqm03|催貨單 P/O|Presses For Delivery Of Goods No P/O
+tqm04|材質價格表|Material Properties Price Table
+tqm05|材料成本分析表|Material Cost Analyse Table
+tqm06|出貨預排作業主檔|Ship Pre-assigned Operation Mostly
+tqm07|出貨預排作業明細檔|Ship Pre-assigned Operation Statement
+tqm08|產品大類、中類系列代碼設定|Item Category, Hit-Category Series Code Set
+tqm09|產品中類系列品項設定|Item Hit-Category Series Item Set
+tqm15|出貨資料機械序號檔|Ship Data Machine Series No. File
+tqm16|出貨通知單表頭檔|Requisition Table Heading
+tqm17|出貨通知單表身檔|Requisition Table Body
+tqm19|產品型錄設定可調整項目|Item Catalog Setting Adjust Item
+tqm20|產品型錄設定可調整項目|Item Catalog Setting Adjust Item
+tqm21|產品款式表頭|Item Style Table Head
+tqm22|產品款式表身|Item Style Table Body
+tqm23|規格項目主檔|Spec Item
+tqm24|規格項目明細檔|Spec Item Detail
+tqm26|產品尺寸顏色明細資料|Item Size Color Detail Data
+trm01|出貨分析表客戶記錄檔|Statement's Customer Record
+trm02|出貨分析表產品記錄檔|Statement's ItemNo Record
+trs01|Excel To Sql 設定檔|Excel To Sql Set
+trs02|Excel To Sql 來源文件紀錄檔|Excel To Sql Source File Record
+trs03|Excel To Sql 欄位記錄檔|Excel To Sql Field Record
+trs_tmp|Excel To Sql 欄位記錄臨時檔|Excel To Sql Field Record Temp
+tsm01|系統啟動設定|System Start Setting
+tsm02|程式設定|TsmProgram Set
+tsm03|單位設定表|Item Unit Table
+tsm04|報表程式設定|Report Setup
+tsm05|業務用語|Document Sales Talk
+tsm06|文件常用條款表身|Document Remark Setup
+tsm07|代碼別|Code Table
+tsm08|C.C.C. Code|C.C.C. Code
+tsm09|代碼設定表|Code Table
+tsm10|單據號碼自動給號檢查|Docs. No. Automatically Numbering Check File
+tsm11|４大ＡＰ行事曆|Four AP Schedule
+tsm12|報表最後一次選項條件|Report The Last Select-option
+tsm13|起運口岸資料設定|Start Shipment Port Data Setting
+tsm15|控制某些設定檔的載入功能有哪些|How Many Ctrl Some Setting File's Load Function
+typecode|typecode(不再使用)|Typecode(Not Use)
+vir|vir(臨時表)|vir(Temp Table)
+
+(925 個受影響的資料列)
