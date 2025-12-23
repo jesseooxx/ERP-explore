@@ -8,6 +8,7 @@ Main Components:
 - db: Database connection management
 - pi_data: PI data query and structures
 - pdf_generator: PDF generation from PI data
+- file_manager: Automatic file naming and filing
 """
 
 __version__ = "0.1.0"
@@ -28,6 +29,17 @@ from .pdf_generator import (
     generate_pi_pdf_bytes,
     PDFGenerationError
 )
+from .file_manager import (
+    get_pi_filename,
+    get_pi_filepath,
+    save_pi_pdf,
+    ensure_directory_exists,
+    get_customer_directory,
+    list_pi_files,
+    sanitize_filename,
+    validate_pi_data_for_filing,
+    FileManagerError
+)
 
 __all__ = [
     # Database
@@ -43,7 +55,17 @@ __all__ = [
     # PDF generation functions
     'generate_pi_pdf',
     'generate_pi_pdf_bytes',
+    # File management functions
+    'get_pi_filename',
+    'get_pi_filepath',
+    'save_pi_pdf',
+    'ensure_directory_exists',
+    'get_customer_directory',
+    'list_pi_files',
+    'sanitize_filename',
+    'validate_pi_data_for_filing',
     # Exceptions
     'PIDataQueryError',
     'PDFGenerationError',
+    'FileManagerError',
 ]
