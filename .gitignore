@@ -9,3 +9,15 @@ docs/erp-manuals/GOLDENTOP_1.chm
 .DS_Store
 Thumbs.db
 *.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# NRP backup files (from X:\)
+nrp_backup/
+
+# Local settings
+.claude/settings.local.json
+.serena/

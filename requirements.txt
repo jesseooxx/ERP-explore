@@ -1,0 +1,14 @@
+# PI Generator - Python Dependencies
+
+# Database connectivity
+pyodbc>=4.0.0
+
+# Data processing (for future use)
+pandas>=1.5.0
+numpy>=1.24.0
+
+# PDF generation (for future use)
+reportlab>=4.0.0
+
+# Utilities
+python-dotenv>=1.0.0
