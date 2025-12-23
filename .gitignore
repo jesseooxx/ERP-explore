@@ -21,3 +21,5 @@ nrp_backup/
 # Local settings
 .claude/settings.local.json
 .serena/
+reverse_engineering/Bkup.a01
+*.a0*

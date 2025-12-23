@@ -1,0 +1,186 @@
+================================================================================
+DATAWIN REPORT FORMAT ANALYSIS
+================================================================================
+
+[DOCUMENT INFO]
+  Magic: Datawin Report
+  Title: PROFORMA INVOICE
+  Version Info: {'v1': 65536, 'plank_count': 43, 'element_count': 55, 'v4': 11, 'v5': 23, 'v6': 11, 'v7': 125, 'v8': 2}
+
+[ELEMENT STATISTICS]
+  EDIT: 140
+  FONT: 4
+  HEAD: 1
+  IMAGE: 6
+  LABEL: 108
+  LINE: 9
+  PLANK: 93
+
+[STYLE FLAGS ANALYSIS]
+  PS_LEFT: 288 occurrences
+  PS_RIGHT: 49 occurrences
+  PS_RESERVED3: 12 occurrences
+  PS_CENTER: 7 occurrences
+  PS_BORDER: 3 occurrences
+  PS_IMAGE: 3 occurrences
+  PS_SHADOW: 1 occurrences
+
+[COORDINATE SYSTEM ANALYSIS]
+  X range: 3 - 597
+  Y range: 2 - 200
+  Width range: 6 - 1206
+  Height range: 1 - 906
+
+[FONT DEFINITIONS]
+  Name: '', Size: 24, Style: PS_FONT_BOLD|PS_FONT_UNDERLINE
+  Name: '', Size: 20, Style: PS_FONT_BOLD
+  Name: '', Size: 14, Style: PS_FONT_BOLD|PS_FONT_UNDERLINE
+  Name: '', Size: 14, Style: PS_FONT_BOLD|PS_FONT_UNDERLINE
+
+[SAMPLE ELEMENTS (first 20)]
+
+  [0] HEAD
+      Position: (0, 0) Size: 0x0
+      Style: PS_BORDER|PS_SHADOW
+
+  [1] PLANK
+      Position: (0, 0) Size: 666x120
+      Style: PS_LEFT|PS_RESERVED3
+
+  [2] PLANK
+      Position: (0, 0) Size: 666x120
+      Style: PS_LEFT|PS_RESERVED3
+
+  [3] PLANK
+      Position: (0, 0) Size: 666x120
+      Style: PS_LEFT|PS_RESERVED3
+
+  [4] PLANK
+      Position: (0, 0) Size: 666x120
+      Style: PS_LEFT|PS_RESERVED3
+
+  [5] PLANK
+      Position: (0, 0) Size: 666x120
+      Style: PS_LEFT|PS_RESERVED3
+
+  [6] PLANK
+      Position: (0, 0) Size: 666x120
+      Style: PS_LEFT|PS_RESERVED3
+
+  [7] PLANK
+      Position: (0, 0) Size: 900x45
+      Style: PS_LEFT
+
+  [8] PLANK
+      Position: (0, 0) Size: 162x15
+      Style: PS_LEFT
+
+  [9] PLANK
+      Position: (0, 200) Size: 900x1
+      Style: PS_LEFT
+
+  [10] PLANK
+      Position: (0, 0) Size: 66x15
+      Style: PS_LEFT
+
+  [11] PLANK
+      Position: (460, 0) Size: 174x90
+      Style: PS_LEFT
+
+  [12] PLANK
+      Position: (442, 0) Size: 162x90
+      Style: PS_LEFT
+
+  [13] PLANK
+      Position: (460, 0) Size: 174x30
+      Style: PS_LEFT
+
+  [14] PLANK
+      Position: (460, 0) Size: 162x75
+      Style: PS_LEFT
+
+  [15] PLANK
+      Position: (460, 0) Size: 162x30
+      Style: PS_LEFT
+
+  [16] PLANK
+      Position: (460, 0) Size: 174x105
+      Style: PS_LEFT
+
+  [17] PLANK
+      Position: (442, 0) Size: 162x105
+      Style: PS_LEFT
+
+  [18] PLANK
+      Position: (460, 0) Size: 174x30
+      Style: PS_LEFT
+
+  [19] PLANK
+      Position: (0, 165) Size: 600x15
+      Style: PS_LEFT
+
+================================================================================
+DISCOVERED DSL GRAMMAR
+================================================================================
+
+FILE STRUCTURE:
+    [Binary Header] (0x00 - 0x2B9)
+        - Magic: "Datawin Report." (16 bytes at 0x00)
+        - Version/Config data (at 0x20)
+        - Report Title (at 0x48, null-terminated, 256 bytes max)
+    [DSL Text Content] (0x2BA onwards)
+        - HEAD declaration
+        - PLANK containers with nested elements
+        - Element definitions
+
+ELEMENT SYNTAX:
+
+1. HEAD - Report header definition
+   HEAD <height>, <style_flags>
+   Example: HEAD 60, PS_BORDER|PS_SHADOW
+
+2. PLANK - Container/Panel element (groups related elements)
+   PLANK ID_PLANK+ <id>, <style_flags>, <x>, <y>, <width>, <height>
+   Example: PLANK ID_PLANK+ 4, PS_LEFT, 460, 0, 174, 90
+
+3. LABEL - Static text label
+   LABEL "<text>", ID_LABEL+ <id>, <style_flags>, <x>, <y>, <width>, <height>
+   Example: LABEL "Date : ", ID_LABEL+ 0, PS_LEFT, 0, 0, 42, 15
+
+4. EDIT - Editable field (data placeholder)
+   EDIT ID_EDIT+ <id>, <style_flags>, <x>, <y>, <width>, <height>
+   Example: EDIT ID_EDIT+ 1, PS_LEFT, 42, 0, 78, 15
+
+5. LINE - Horizontal/Vertical line
+   LINE, <thickness>, <x1>, <y1>, <x2>, <y2>
+   Example: LINE, 7, 0, 0, 900, 0
+
+6. IMAGE - External image reference
+   IMAGE "<path>", ID_LABEL+ <id>, <style_flags>
+   Example: IMAGE "C:\temp\logo.jpg", ID_LABEL+ 0, PS_LEFT
+
+7. FONT - Font definition (applies to following text elements)
+   FONT "<name>", <size>, <style_flags>
+   Example: FONT "", 24, PS_FONT_BOLD|PS_FONT_UNDERLINE
+
+STYLE FLAGS:
+    PS_LEFT          - Left alignment
+    PS_RIGHT         - Right alignment
+    PS_CENTER        - Center alignment
+    PS_BORDER        - Draw border
+    PS_SHADOW        - Add shadow effect
+    PS_FONT_BOLD     - Bold font
+    PS_FONT_UNDERLINE - Underlined font
+    PS_RESERVED3     - Reserved/special flag
+
+COORDINATE SYSTEM:
+    - Origin: Top-left corner
+    - Units: Likely pixels or points (need verification)
+    - All coordinates are relative to parent PLANK container
+
+RENDERING ORDER:
+    1. Parse HEAD to get page header height
+    2. Process PLANKs in order (containers define regions)
+    3. For each PLANK, render child elements in sequence
+    4. FONT definitions affect subsequent text elements until changed
+    5. EDIT fields are placeholders filled with runtime data

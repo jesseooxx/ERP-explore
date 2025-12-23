@@ -1,0 +1,15 @@
+[project]
+name = "nrp32-renderer"
+version = "1.0.0"
+description = "Fast PDF rendering using nrp32's native DLL (32-bit)"
+requires-python = ">=3.8"
+dependencies = [
+    "pywin32>=306",
+]
+
+[project.scripts]
+nrp-render = "nrp32_renderer:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
