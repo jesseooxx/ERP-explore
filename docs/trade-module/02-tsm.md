@@ -1,4 +1,4 @@
-# TSM - Runtime Parameters
+# TSM - 運作參數
 
 ```yaml
 ---
@@ -14,82 +14,82 @@ index: "./_index.yaml"
 ---
 ```
 
-## Module Overview
+## 模組概述
 
-TSM stores runtime parameters and conversion factors used during transaction processing. Unlike TAM (static config), TSM values may change based on operational needs.
+TSM 儲存交易處理過程中使用的運作參數和轉換因子。不同於 TAM (靜態設定)，TSM 的值可能根據營運需求而變動。
 
 ---
 
-## Table Registry
+## 資料表清單
 
-| Table | Purpose | Example Values |
+| 資料表 | 用途 | 範例值 |
 |-------|---------|----------------|
-| tsm01 | **System startup params** | IC15=35.315 (CBM to CUFT) |
-| tsm02 | Number formats | decimal places, separators |
-| tsm03 | **Unit conversion** | PCS <-> BOX <-> PALLET |
-| tsm04 | **Report formats** | INVOICE template, Packing List |
-| tsm05 | Print settings | printer, margins |
-| tsm06 | Auto-numbering seeds | current sequence numbers |
-| tsm07 | Calculation modes | rounding, precision |
-| tsm08-09 | Reserved | - |
-| tsm10 | **Document numbering rules** | prefix, suffix, length |
-| tsm11-13 | Module-specific params | varies |
+| tsm01 | **系統啟動參數** | IC15=35.315 (立方公尺轉立方英尺) |
+| tsm02 | 數字格式 | 小數位數、分隔符號 |
+| tsm03 | **單位轉換** | PCS <-> BOX <-> PALLET |
+| tsm04 | **報表格式** | 發票範本、裝箱單 |
+| tsm05 | 列印設定 | 印表機、邊界 |
+| tsm06 | 自動編號種子 | 目前序號 |
+| tsm07 | 計算模式 | 四捨五入、精確度 |
+| tsm08-09 | 保留 | - |
+| tsm10 | **單據編號規則** | 前綴、後綴、長度 |
+| tsm11-13 | 模組專屬參數 | 各異 |
 
 ---
 
-## Key Tables
+## 重要資料表
 
-### TSM01 - System Parameters
+### TSM01 - 系統參數
 
 ```yaml
 table: tsm01
-purpose: "Core calculation parameters"
+purpose: "核心計算參數"
 ```
 
-| Parameter | Value | Usage |
+| 參數 | 值 | 用途 |
 |-----------|-------|-------|
-| IC15 | 35.315 | CBM to CUFT conversion factor |
-| IC16 | 2.205 | KG to LBS conversion factor |
-| IC20 | Y/N | Auto-create AR on shipment |
-| IC21 | Y/N | Auto-create AP on PO |
+| IC15 | 35.315 | 立方公尺轉立方英尺轉換因子 |
+| IC16 | 2.205 | 公斤轉磅轉換因子 |
+| IC20 | Y/N | 出貨時自動建立應收帳款 |
+| IC21 | Y/N | PO 時自動建立應付帳款 |
 
-### TSM03 - Unit Conversion
+### TSM03 - 單位轉換
 
 ```yaml
 table: tsm03
-purpose: "Unit of measure conversions"
+purpose: "計量單位轉換"
 ```
 
-| From | To | Factor | Used In |
+| 來源 | 目標 | 因子 | 使用於 |
 |------|-----|--------|---------|
-| PCS | BOX | variable | `[[thm03]]` packing |
-| BOX | PALLET | variable | shipping |
-| KG | LBS | 2.205 | weight display |
-| CBM | CUFT | 35.315 | volume display |
+| PCS | BOX | 可變 | `[[thm03]]` 包裝 |
+| BOX | PALLET | 可變 | 出貨 |
+| KG | LBS | 2.205 | 重量顯示 |
+| CBM | CUFT | 35.315 | 體積顯示 |
 
-### TSM04 - Report Formats
+### TSM04 - 報表格式
 
 ```yaml
 table: tsm04
-purpose: "Document template definitions"
+purpose: "文件範本定義"
 ```
 
-| Format Code | Document | Template Fields |
+| 格式代碼 | 文件 | 範本欄位 |
 |-------------|----------|-----------------|
-| INV01 | INVOICE | header, lines, totals |
-| PKG01 | PACKING LIST | boxes, weights, dims |
-| MRK01 | SHIPPING MARK | logo, text blocks |
-| SC01 | Sales Contract | terms, items |
-| PO01 | Purchase Order | supplier, items |
+| INV01 | 發票 | 表頭、明細、總計 |
+| PKG01 | 裝箱單 | 箱數、重量、尺寸 |
+| MRK01 | 嘜頭 | 商標、文字區塊 |
+| SC01 | 銷售合約 | 條款、品項 |
+| PO01 | 採購單 | 供應商、品項 |
 
-### TSM10 - Document Numbering
+### TSM10 - 單據編號
 
 ```yaml
 table: tsm10
-purpose: "Auto-numbering rules for documents"
+purpose: "單據自動編號規則"
 ```
 
-| Doc Type | Pattern | Example |
+| 單據類型 | 格式 | 範例 |
 |----------|---------|---------|
 | PI | {YY}{MM}{NNNN} | 2512-0001 |
 | PO | {PI}-{NN} | 00048-01 |
@@ -97,40 +97,40 @@ purpose: "Auto-numbering rules for documents"
 
 ---
 
-## Cross-Module Usage
+## 跨模組使用
 
 ```yaml
 used_by:
   tfm:
-    - "tsm10 -> PI number generation"
-    - "tsm04 -> PI print format"
+    - "tsm10 -> PI 編號產生"
+    - "tsm04 -> PI 列印格式"
   tgm:
-    - "tsm10 -> PO number generation"
-    - "tsm04 -> PO print format"
+    - "tsm10 -> PO 編號產生"
+    - "tsm04 -> PO 列印格式"
   thm:
-    - "tsm01.IC15 -> CBM calculation"
-    - "tsm03 -> unit conversions for packing"
-    - "tsm04 -> INVOICE, PKG, MARK formats"
+    - "tsm01.IC15 -> 立方公尺計算"
+    - "tsm03 -> 包裝單位轉換"
+    - "tsm04 -> 發票、裝箱單、嘜頭格式"
 ```
 
 ---
 
-## Relationship with TAM
+## 與 TAM 的關係
 
 ```yaml
 configuration_layers:
   tam:
-    scope: "Global, rarely changed"
-    examples: "Company info, currencies, ports"
+    scope: "全域、鮮少變動"
+    examples: "公司資訊、幣別、港口"
   tsm:
-    scope: "Operational, may change"
-    examples: "Number formats, conversion factors, templates"
+    scope: "營運層、可能變動"
+    examples: "數字格式、轉換因子、範本"
 ```
 
 ---
 
-## Navigation
+## 導覽
 
-- **Previous**: `./01-tam.md` (System Settings)
-- **Next**: `./03-tbm.md` (Customer Master)
-- **Index**: `./_index.yaml`
+- **上一頁**: `./01-tam.md` (系統設定)
+- **下一頁**: `./03-tbm.md` (客戶主檔)
+- **索引**: `./_index.yaml`

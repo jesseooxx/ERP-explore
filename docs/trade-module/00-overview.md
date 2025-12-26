@@ -1,4 +1,4 @@
-# DataWin ERP Trade Module - Complete Business Flow
+# DataWin ERP 貿易模組 - 完整業務流程
 
 ```yaml
 ---
@@ -11,153 +11,153 @@ auxiliary: "./_auxiliary.md"
 ---
 ```
 
-## Document Purpose
+## 文件目的
 
-This document describes the complete export trade business flow from customer setup to shipment completion. It serves as the primary reference for understanding how data flows through the T-Module system.
+本文件描述從客戶設定到出貨完成的完整出口貿易業務流程。它作為理解資料如何在 T 模組系統中流動的主要參考文件。
 
-**Reading Order for AI Agents:**
-1. This document (business flow understanding)
-2. `_index.yaml` (field mappings and relationships)
-3. Individual module docs (field-level details)
-4. `_auxiliary.md` (support systems)
-
----
-
-## System Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         CONFIGURATION LAYER                                  │
-│  ┌─────────────┐  ┌─────────────┐                                           │
-│  │    tam      │  │    tsm      │                                           │
-│  │  (系統設定)  │  │  (運作參數)  │                                           │
-│  │  26 tables  │  │  15 tables  │                                           │
-│  └──────┬──────┘  └──────┬──────┘                                           │
-│         │                │                                                   │
-│         └────────┬───────┘                                                   │
-│                  ▼                                                           │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                          MASTER DATA LAYER                                   │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                          │
-│  │    tbm      │  │    tcm      │  │    tdm      │                          │
-│  │   (客戶)    │  │   (供應商)   │  │   (產品)    │                          │
-│  │  23 tables  │  │  15 tables  │  │  26 tables  │                          │
-│  │  PK: ba01   │  │  PK: ca01   │  │  PK: da01   │                          │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘                          │
-│         │                │                │                                  │
-│         └────────────────┼────────────────┘                                  │
-│                          ▼                                                   │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                         TRANSACTION LAYER                                    │
-│                                                                              │
-│  ┌─────────┐      ┌─────────┐      ┌─────────┐      ┌─────────┐            │
-│  │   tem   │      │   tfm   │ ───▶ │   tgm   │ ───▶ │   thm   │            │
-│  │  (報價)  │      │  (訂單)  │      │  (採購)  │      │  (出貨)  │            │
-│  │ 未使用   │      │ 12 tbls │      │  9 tbls │      │ 14 tbls │            │
-│  │ tem05用  │      │ PK:fa01 │      │ PK:ga01 │      │ PK:ha01 │            │
-│  └────┬────┘      └────┬────┘      └────┬────┘      └────┬────┘            │
-│       │ BOM            │                │                │                  │
-│       └───────────────▶│                │                │                  │
-│                        │                │                │                  │
-│                        │                │                ▼                  │
-│                        │                │         ┌────────────┐            │
-│                        │                │         │ INVOICE    │            │
-│                        │                │         │ PACKING    │            │
-│                        │                │         │ MARK       │            │
-│                        │                │         └────────────┘            │
-│                        │                │                                   │
-├────────────────────────┼────────────────┼───────────────────────────────────┤
-│                        ▼                ▼           AUXILIARY               │
-│              ┌──────────────────────────────────────────────┐               │
-│              │  tlm(帳款) tqm(規格) tmm(統計) trm(分析)      │               │
-│              │  tjm(索賠) tpm(拋轉) tnm(歷史)               │               │
-│              │  --> See _auxiliary.md                       │               │
-│              └──────────────────────────────────────────────┘               │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+**AI 代理閱讀順序:**
+1. 本文件 (業務流程理解)
+2. `_index.yaml` (欄位對應和關聯)
+3. 個別模組文件 (欄位層級細節)
+4. `_auxiliary.md` (輔助系統)
 
 ---
 
-## Business Flow Steps
+## 系統架構
 
-### Step 1: Master Data Setup
+```
++---------------------------------------------------------------------------+
+|                             設定層                                          |
+|  +-------------+  +-------------+                                           |
+|  |    tam      |  |    tsm      |                                           |
+|  |  (系統設定)  |  |  (運作參數)  |                                           |
+|  |  26 tables  |  |  15 tables  |                                           |
+|  +------+------+  +------+------+                                           |
+|         |                |                                                   |
+|         +--------+-------+                                                   |
+|                  v                                                           |
++-----------------------------------------------------------------------------+
+|                            主檔資料層                                         |
+|  +-------------+  +-------------+  +-------------+                          |
+|  |    tbm      |  |    tcm      |  |    tdm      |                          |
+|  |   (客戶)    |  |   (供應商)   |  |   (產品)    |                          |
+|  |  23 tables  |  |  15 tables  |  |  26 tables  |                          |
+|  |  PK: ba01   |  |  PK: ca01   |  |  PK: da01   |                          |
+|  +------+------+  +------+------+  +------+------+                          |
+|         |                |                |                                  |
+|         +----------------+----------------+                                  |
+|                          v                                                   |
++-----------------------------------------------------------------------------+
+|                           交易層                                              |
+|                                                                              |
+|  +---------+      +---------+      +---------+      +---------+            |
+|  |   tem   |      |   tfm   | ---> |   tgm   | ---> |   thm   |            |
+|  |  (報價)  |      |  (訂單)  |     |  (採購)  |     |  (出貨)  |            |
+|  | 未使用   |      | 12 tbls |      |  9 tbls |      | 14 tbls |            |
+|  | tem05用  |      | PK:fa01 |      | PK:ga01 |      | PK:ha01 |            |
+|  +----+----+      +----+----+      +----+----+      +----+----+            |
+|       | BOM            |                |                |                  |
+|       +--------------->|                |                |                  |
+|                        |                |                |                  |
+|                        |                |                v                  |
+|                        |                |         +------------+            |
+|                        |                |         | INVOICE    |            |
+|                        |                |         | PACKING    |            |
+|                        |                |         | MARK       |            |
+|                        |                |         +------------+            |
+|                        |                |                                   |
++------------------------+----------------+-----------------------------------+
+|                        v                v             輔助模組               |
+|              +----------------------------------------------+               |
+|              |  tlm(帳款) tqm(規格) tmm(統計) trm(分析)      |               |
+|              |  tjm(索賠) tpm(拋轉) tnm(歷史)               |               |
+|              |  --> 參見 _auxiliary.md                      |               |
+|              +----------------------------------------------+               |
++-----------------------------------------------------------------------------+
+```
 
-Before any transaction, master data must exist:
+---
 
-| Module | Table | Primary Key | Purpose |
+## 業務流程步驟
+
+### 步驟 1: 主檔資料設定
+
+在任何交易之前，主檔資料必須存在:
+
+| 模組 | 資料表 | 主鍵 | 用途 |
 |--------|-------|-------------|---------|
-| tbm | `[[tbm01]]` | `[[tbm01.ba01]]` | Customer info |
-| tcm | `[[tcm01]]` | `[[tcm01.ca01]]` | Supplier info |
-| tdm | `[[tdm01]]` | `[[tdm01.da01]]` | Product info |
-| tdm | `[[tdm05]]` | `(de01, de02)` | Standard BOM |
+| tbm | `[[tbm01]]` | `[[tbm01.ba01]]` | 客戶資料 |
+| tcm | `[[tcm01]]` | `[[tcm01.ca01]]` | 供應商資料 |
+| tdm | `[[tdm01]]` | `[[tdm01.da01]]` | 產品資料 |
+| tdm | `[[tdm05]]` | `(de01, de02)` | 標準 BOM |
 
-**BOM Structure:**
+**BOM 結構:**
 ```
-[[tdm05]] Standard BOM:
-  de01 = Product ID (FK -> [[tdm01.da01]])
-  de02 = Component ID
-  de03 = Ratio numerator
-  de04 = Ratio denominator
-  de05 = Supplier (FK -> [[tcm01.ca01]])
+[[tdm05]] 標準 BOM:
+  de01 = 產品編號 (FK -> [[tdm01.da01]])
+  de02 = 組件編號
+  de03 = 比例分子
+  de04 = 比例分母
+  de05 = 供應商 (FK -> [[tcm01.ca01]])
 
-Component Qty = Order Qty * (de03 / de04)
-```
-
----
-
-### Step 2: Quotation (tem) - NOT USED
-
-> **PRACTICAL NOTE**: tem01/tem02 報價功能未使用。實際業務直接從 tfm 開始。
-> 但 `[[tem05]]` (Order BOM) 仍被使用，儲存訂單專屬 BOM。
-
-**Tables:** `[[tem01]]` (master - 未使用), `[[tem02]]` (detail - 未使用), `[[tem05]]` (BOM - **使用中**)
-
-```
-實際流程跳過此步驟，直接進入 Step 3 (tfm)
-tem05 Order BOM 在建立訂單時自動從 tdm05 複製
+組件數量 = 訂單數量 * (de03 / de04)
 ```
 
 ---
 
-### Step 3: Sales Order / PI (tfm) - ACTUAL STARTING POINT
+### 步驟 2: 報價 (tem) - 未使用
 
-**Tables:** `[[tfm01]]` (master), `[[tfm02]]` (detail), `[[tem05]]` (order BOM)
+> **實務說明**: tem01/tem02 報價功能未使用。實際業務直接從 tfm 開始。
+> 但 `[[tem05]]` (訂單 BOM) 仍被使用，儲存訂單專屬 BOM。
+
+**資料表:** `[[tem01]]` (主檔 - 未使用), `[[tem02]]` (明細 - 未使用), `[[tem05]]` (BOM - **使用中**)
 
 ```
-Input:
-  - From quotation: [[tem01.ea01]] (optional)
-  - Or direct entry with customer/products
-
-Process:
-  1. Create [[tfm01]] with fa01 (PI number)
-  2. Copy/create items in [[tfm02]]
-  3. TRIGGER: Copy BOM from [[tdm05]] to [[tem05]] with ee011 = [[tfm01.fa01]]
-
-Output:
-  - [[tfm01.fa01]] = Sales Contract Number
-  - [[tfm02]] = Order line items
-  - [[tem05]] = Order-specific BOM (ee011 = PI number)
+實際流程跳過此步驟，直接進入步驟 3 (tfm)
+tem05 訂單 BOM 在建立訂單時自動從 tdm05 複製
 ```
 
-**Key Field Mappings:**
-| tfm Field | Source | Description |
+---
+
+### 步驟 3: 銷售訂單 / PI (tfm) - 實際起始點
+
+**資料表:** `[[tfm01]]` (主檔), `[[tfm02]]` (明細), `[[tem05]]` (訂單 BOM)
+
+```
+輸入:
+  - 來自報價: [[tem01.ea01]] (選用)
+  - 或直接輸入客戶/產品資料
+
+處理:
+  1. 建立 [[tfm01]] 並產生 fa01 (PI 編號)
+  2. 複製/建立項目至 [[tfm02]]
+  3. 觸發: 從 [[tdm05]] 複製 BOM 至 [[tem05]]，ee011 = [[tfm01.fa01]]
+
+輸出:
+  - [[tfm01.fa01]] = 銷售合約編號
+  - [[tfm02]] = 訂單明細項目
+  - [[tem05]] = 訂單專屬 BOM (ee011 = PI 編號)
+```
+
+**主要欄位對應:**
+| tfm 欄位 | 來源 | 說明 |
 |-----------|--------|-------------|
-| `[[tfm01.fa01]]` | Auto-gen | PI Order number |
-| `[[tfm01.fa03]]` | System | Order date (YYYYMMDD) |
-| `[[tfm01.fa04]]` | `[[tbm01.ba01]]` | Customer code |
-| `[[tfm01.fa11]]` | `[[tam17]]` | Port of loading |
-| `[[tfm01.fa14]]` | `[[tam17]]` | Port of destination |
-| `[[tfm01.fa19]]` | `[[tam08]]` | Currency |
-| `[[tfm01.fa20]]` | `[[tam08]]`/input | Exchange rate |
-| `[[tfm02.fb01]]` | `[[tfm01.fa01]]` | FK to order master |
-| `[[tfm02.fb02]]` | Auto-seq | Line item sequence |
-| `[[tfm02.fb03]]` | `[[tdm01.da01]]` | Product code |
-| `[[tfm02.fb09]]` | User input | Order quantity |
-| `[[tfm02.fb11]]` | Quotation/input | Unit price |
+| `[[tfm01.fa01]]` | 自動產生 | PI 訂單編號 |
+| `[[tfm01.fa03]]` | 系統 | 訂單日期 (YYYYMMDD) |
+| `[[tfm01.fa04]]` | `[[tbm01.ba01]]` | 客戶代碼 |
+| `[[tfm01.fa11]]` | `[[tam17]]` | 裝運港 |
+| `[[tfm01.fa14]]` | `[[tam17]]` | 目的港 |
+| `[[tfm01.fa19]]` | `[[tam08]]` | 幣別 |
+| `[[tfm01.fa20]]` | `[[tam08]]/輸入` | 匯率 |
+| `[[tfm02.fb01]]` | `[[tfm01.fa01]]` | FK 至訂單主檔 |
+| `[[tfm02.fb02]]` | 自動序號 | 明細項目序號 |
+| `[[tfm02.fb03]]` | `[[tdm01.da01]]` | 產品代碼 |
+| `[[tfm02.fb09]]` | 使用者輸入 | 訂單數量 |
+| `[[tfm02.fb11]]` | 報價/輸入 | 單價 |
 
-**Order BOM in tem05:**
+**tem05 中的訂單 BOM:**
 ```
-When [[tfm02]] is created:
+當 [[tfm02]] 建立時:
   INSERT INTO [[tem05]]
   SELECT 'S', [[tfm01.fa01]], de01, de02, de03, de04, de05, ...
   FROM [[tdm05]]
@@ -166,233 +166,234 @@ When [[tfm02]] is created:
 
 ---
 
-### Step 4: Shipment Scheduling (tfm03/04)
+### 步驟 4: 出貨排程 (tfm03/04)
 
-**Tables:** `[[tfm03]]` (schedule detail), `[[tfm04]]` (schedule summary)
+**資料表:** `[[tfm03]]` (排程明細), `[[tfm04]]` (排程彙總)
 
 ```
-Input:
-  - Order: [[tfm01.fa01]]
-  - Items: [[tfm02]]
+輸入:
+  - 訂單: [[tfm01.fa01]]
+  - 項目: [[tfm02]]
 
-Process:
-  1. User assigns shipment dates and quantities per item
-  2. System creates [[tfm03]] records (by product, ETD, destination)
-  3. System aggregates to [[tfm04]] (by ETD, destination)
+處理:
+  1. 使用者指派每個項目的出貨日期和數量
+  2. 系統建立 [[tfm03]] 記錄 (依產品、ETD、目的地)
+  3. 系統彙總至 [[tfm04]] (依 ETD、目的地)
 
-Output:
-  - [[tfm03]] = Per-product shipment schedule
-  - [[tfm04]] = Consolidated shipment summary
+輸出:
+  - [[tfm03]] = 各產品出貨排程
+  - [[tfm04]] = 合併出貨彙總
 ```
 
-**Key Field Mappings:**
-| Field | Description |
+**主要欄位對應:**
+| 欄位 | 說明 |
 |-------|-------------|
-| `[[tfm03.fc01]]` | PI number (FK -> [[tfm01.fa01]]) |
-| `[[tfm03.fc02]]` | ETD date (YYYYMMDD) |
-| `[[tfm03.fc031]]` | Destination port |
-| `[[tfm03.fc04]]` | Product code (FK -> [[tfm02.fb03]]) |
-| `[[tfm03.fc05]]` | Scheduled quantity |
-| `[[tfm03.fc06]]` | Shipped quantity |
-| `[[tfm03.fc08]]` | Completion flag (Y/N) |
-| `[[tfm04.fd01]]` | PI number |
-| `[[tfm04.fd02]]` | ETD date |
-| `[[tfm04.fd03]]` | Destination port |
-| `[[tfm04.fd06]]` | Total CBM |
-| `[[tfm04.fd08]]` | Total cartons |
+| `[[tfm03.fc01]]` | PI 編號 (FK -> [[tfm01.fa01]]) |
+| `[[tfm03.fc02]]` | ETD 日期 (YYYYMMDD) |
+| `[[tfm03.fc031]]` | 目的港 |
+| `[[tfm03.fc04]]` | 產品代碼 (FK -> [[tfm02.fb03]]) |
+| `[[tfm03.fc05]]` | 排程數量 |
+| `[[tfm03.fc06]]` | 已出貨數量 |
+| `[[tfm03.fc08]]` | 完成旗標 (Y/N) |
+| `[[tfm04.fd01]]` | PI 編號 |
+| `[[tfm04.fd02]]` | ETD 日期 |
+| `[[tfm04.fd03]]` | 目的港 |
+| `[[tfm04.fd06]]` | 總材積 (CBM) |
+| `[[tfm04.fd08]]` | 總箱數 |
 
 ---
 
-### Step 5: Purchase Order Generation (tgm)
+### 步驟 5: 採購單產生 (tgm)
 
-**Tables:** `[[tgm01]]` (master), `[[tgm02]]` (detail)
+**資料表:** `[[tgm01]]` (主檔), `[[tgm02]]` (明細)
 
 ```
-Input:
-  - Order: [[tfm01.fa01]], [[tfm02]]
-  - BOM: [[tem05]] (order-specific BOM)
+輸入:
+  - 訂單: [[tfm01.fa01]], [[tfm02]]
+  - BOM: [[tem05]] (訂單專屬 BOM)
 
-Process:
-  1. Read order items from [[tfm02]]
-  2. Look up BOM components from [[tem05]]
-  3. Calculate: Purchase Qty = [[tfm02.fb09]] * ([[tem05.ee04]] / [[tem05.ee05]])
-  4. Group by supplier ([[tem05.ee06]])
-  5. Create [[tgm01]] per supplier
-  6. Create [[tgm02]] with component details
-  7. Link back: [[tgm01.ga2301]] = [[tfm01.fa01]]
-                [[tgm02.gb2601]] = [[tfm01.fa01]]
+處理:
+  1. 從 [[tfm02]] 讀取訂單項目
+  2. 從 [[tem05]] 查詢 BOM 組件
+  3. 計算: 採購數量 = [[tfm02.fb09]] * ([[tem05.ee04]] / [[tem05.ee05]])
+  4. 依供應商 ([[tem05.ee06]]) 分組
+  5. 每個供應商建立 [[tgm01]]
+  6. 建立 [[tgm02]] 含組件明細
+  7. 回連結: [[tgm01.ga2301]] = [[tfm01.fa01]]
+               [[tgm02.gb2601]] = [[tfm01.fa01]]
 
-Output:
-  - [[tgm01.ga01]] = PO Number (format: {PI}-{seq}, e.g., "00048-01")
-  - [[tgm02]] = Purchase line items
-  - [[tfm05]] = Order-Purchase link record
+輸出:
+  - [[tgm01.ga01]] = PO 編號 (格式: {PI}-{序號}, 例如 "00048-01")
+  - [[tgm02]] = 採購明細項目
+  - [[tfm05]] = 訂單-採購連結記錄
 ```
 
-**Key Field Mappings:**
-| tgm Field | Source | Description |
+**主要欄位對應:**
+| tgm 欄位 | 來源 | 說明 |
 |-----------|--------|-------------|
-| `[[tgm01.ga01]]` | Auto-gen | PO number |
-| `[[tgm01.ga03]]` | System | PO date |
-| `[[tgm01.ga04]]` | `[[tem05.ee06]]` | Supplier code |
-| `[[tgm01.ga2301]]` | `[[tfm01.fa01]]` | **Link to PI** |
-| `[[tgm02.gb01]]` | `[[tgm01.ga01]]` | FK to PO master |
-| `[[tgm02.gb02]]` | Auto-seq | Line sequence |
-| `[[tgm02.gb03]]` | `[[tem05.ee02]]` | Product/component |
-| `[[tgm02.gb09]]` | Calculated | Purchase quantity |
-| `[[tgm02.gb2601]]` | `[[tfm01.fa01]]` | **Link to PI** |
+| `[[tgm01.ga01]]` | 自動產生 | PO 編號 |
+| `[[tgm01.ga03]]` | 系統 | PO 日期 |
+| `[[tgm01.ga04]]` | `[[tem05.ee06]]` | 供應商代碼 |
+| `[[tgm01.ga2301]]` | `[[tfm01.fa01]]` | **連結至 PI** |
+| `[[tgm02.gb01]]` | `[[tgm01.ga01]]` | FK 至 PO 主檔 |
+| `[[tgm02.gb02]]` | 自動序號 | 明細序號 |
+| `[[tgm02.gb03]]` | `[[tem05.ee02]]` | 產品/組件 |
+| `[[tgm02.gb09]]` | 計算值 | 採購數量 |
+| `[[tgm02.gb2601]]` | `[[tfm01.fa01]]` | **連結至 PI** |
 
-**Purchase Quantity Calculation:**
+**採購數量計算:**
 ```sql
+-- 採購數量 = 訂單數量 * (BOM比例分子 / BOM比例分母)
 Purchase_Qty = Order_Qty * (BOM_Ratio_Num / BOM_Ratio_Denom)
              = [[tfm02.fb09]] * ([[tem05.ee04]] / [[tem05.ee05]])
 ```
 
 ---
 
-### Step 6: Shipment / INVOICE / Packing (thm)
+### 步驟 6: 出貨 / INVOICE / 包裝 (thm)
 
-**Tables:** `[[thm01]]` (master), `[[thm02]]` (PI items), `[[thm03]]` (packing), `[[thm04]]` (invoice items), `[[thm06]]` (mark)
+**資料表:** `[[thm01]]` (主檔), `[[thm02]]` (PI 項目), `[[thm03]]` (包裝), `[[thm04]]` (發票項目), `[[thm06]]` (嘜頭)
 
 ```
-Input:
-  - Schedule: [[tfm03]], [[tfm04]]
-  - Order: [[tfm01]], [[tfm02]]
-  - Products: [[tdm01]], [[tdm08]] (packaging info)
+輸入:
+  - 排程: [[tfm03]], [[tfm04]]
+  - 訂單: [[tfm01]], [[tfm02]]
+  - 產品: [[tdm01]], [[tdm08]] (包裝資訊)
 
-Process:
-  1. Create [[thm01]] with shipment/invoice header
-  2. Load order items to [[thm02]] from [[tfm02]]
-  3. Create packing items in [[thm03]] (from [[tdm08]] or manual)
-  4. Create invoice items in [[thm04]]
-  5. Setup shipping mark in [[thm06]]
-  6. TRIGGER: Auto-create AR in [[tlm01]]
+處理:
+  1. 建立 [[thm01]] 含出貨/發票表頭
+  2. 從 [[tfm02]] 載入訂單項目至 [[thm02]]
+  3. 在 [[thm03]] 建立包裝項目 (從 [[tdm08]] 或手動)
+  4. 在 [[thm04]] 建立發票項目
+  5. 在 [[thm06]] 設定嘜頭
+  6. 觸發: 自動在 [[tlm01]] 建立應收帳款
 
-Output Documents:
+輸出文件:
   - INVOICE: [[thm01]] + [[thm02]] + [[thm04]]
   - PACKING LIST: [[thm01]] + [[thm03]]
   - SHIPPING MARK: [[thm06]]
 ```
 
-**Key Field Mappings:**
-| thm Field | Source | Description |
+**主要欄位對應:**
+| thm 欄位 | 來源 | 說明 |
 |-----------|--------|-------------|
-| `[[thm01.ha01]]` | Auto-gen | Invoice/Shipment number |
-| `[[thm01.ha03]]` | System | Shipment date |
-| `[[thm01.ha04]]` | `[[tfm01.fa04]]` | Customer code |
-| `[[thm01.ha19]]` | `[[tfm01.fa19]]` | Currency |
-| `[[thm02.hb01]]` | `[[thm01.ha01]]` | FK to shipment |
-| `[[thm02.hb02]]` | `[[tfm02.fb03]]` | Product code |
-| `[[thm03]]` | Packing details | Box numbers, dimensions |
-| `[[thm04]]` | Invoice line items | Qty, price, amount |
-| `[[thm06]]` | Shipping mark | Mark template and content |
+| `[[thm01.ha01]]` | 自動產生 | 發票/出貨編號 |
+| `[[thm01.ha03]]` | 系統 | 出貨日期 |
+| `[[thm01.ha04]]` | `[[tfm01.fa04]]` | 客戶代碼 |
+| `[[thm01.ha19]]` | `[[tfm01.fa19]]` | 幣別 |
+| `[[thm02.hb01]]` | `[[thm01.ha01]]` | FK 至出貨主檔 |
+| `[[thm02.hb02]]` | `[[tfm02.fb03]]` | 產品代碼 |
+| `[[thm03]]` | 包裝明細 | 箱號、尺寸 |
+| `[[thm04]]` | 發票明細項目 | 數量、價格、金額 |
+| `[[thm06]]` | 嘜頭 | 嘜頭範本和內容 |
 
-**Auto AR Generation:**
+**自動產生應收帳款:**
 ```
-ON [[thm01]] SAVE:
+當 [[thm01]] 儲存時:
   INSERT INTO [[tlm01]] (
     invoice_no = [[thm01.ha01]],
     customer = [[thm01.ha04]],
     amount = SUM([[thm04.amount]]),
     currency = [[thm01.ha19]],
-    doc_type = 'I'  -- Invoice
+    doc_type = 'I'  -- 發票
   )
 ```
 
 ---
 
-## Complete Data Flow Diagram
+## 完整資料流程圖
 
 ```
-┌────────────────────────────────────────────────────────────────────────────┐
-│                              DATA FLOW                                      │
-├────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  [[tbm01.ba01]] ─────────────────────────────────────────────────────┐     │
-│       │                                                               │     │
-│       ▼                                                               │     │
-│  [[tem01.ea02]] ──▶ [[tfm01.fa04]] ──▶ [[thm01.ha04]] ──▶ [[tlm01]]  │     │
-│                                                                       │     │
-│  [[tdm01.da01]] ─────────────────────────────────────────────────────┤     │
-│       │                                                               │     │
-│       ▼                                                               │     │
-│  [[tem02.eb03]] ──▶ [[tfm02.fb03]] ──▶ [[thm02.hb02]]                │     │
-│       │                    │                                          │     │
-│       │                    ▼                                          │     │
-│       │              [[tem05.ee02]] (Order BOM)                       │     │
-│       │                    │                                          │     │
-│       │                    ▼                                          │     │
-│       │              [[tgm02.gb03]] (Purchase)                        │     │
-│       │                                                               │     │
-│  [[tdm05]] ──────────────────────────────────────────────────────────┤     │
-│  (Standard BOM)            │                                          │     │
-│       │                    ▼                                          │     │
-│       └──────────▶ [[tem05]] (Order BOM)                              │     │
-│                           │                                           │     │
-│                           ▼                                           │     │
-│                    Purchase Qty Calculation                           │     │
-│                           │                                           │     │
-│                           ▼                                           │     │
-│                    [[tgm02.gb09]]                                     │     │
-│                                                                       │     │
-│  [[tfm01.fa01]] ─────────────────────────────────────────────────────┤     │
-│       │                                                               │     │
-│       ├──▶ [[tfm02.fb01]]                                            │     │
-│       ├──▶ [[tfm03.fc01]]                                            │     │
-│       ├──▶ [[tfm04.fd01]]                                            │     │
-│       ├──▶ [[tfm05.fe01]]                                            │     │
-│       ├──▶ [[tgm01.ga2301]] ◀── Link to PI                           │     │
-│       ├──▶ [[tgm02.gb2601]] ◀── Link to PI                           │     │
-│       └──▶ [[tem05.ee011]] ◀── Order BOM identifier                  │     │
-│                                                                       │     │
-└────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Key Formulas
-
-### BOM Component Calculation
-```
-Component_Qty = Order_Qty * (Ratio_Num / Ratio_Denom)
-
-Standard BOM: [[tdm05.de03]] / [[tdm05.de04]]
-Order BOM:    [[tem05.ee04]] / [[tem05.ee05]]
-```
-
-### CBM Calculation
-```
-Total_CBM = Ship_Qty * (Outer_CBM / Outer_Qty)
-          = [[tfm03.fc05]] * ([[tfm02.fb25]] / [[tfm02.fb23]])
-```
-
-### Invoice Amount
-```
-Line_Amount = Qty * Unit_Price
-            = [[thm04.qty]] * [[thm04.unit_price]]
-
-Total = SUM(Line_Amount) + Freight + Insurance - Discount
++----------------------------------------------------------------------------+
+|                              資料流程                                        |
++----------------------------------------------------------------------------+
+|                                                                             |
+|  [[tbm01.ba01]] -----------------------------------------------------+     |
+|       |                                                               |     |
+|       v                                                               |     |
+|  [[tem01.ea02]] --> [[tfm01.fa04]] --> [[thm01.ha04]] --> [[tlm01]]  |     |
+|                                                                       |     |
+|  [[tdm01.da01]] -----------------------------------------------------+     |
+|       |                                                               |     |
+|       v                                                               |     |
+|  [[tem02.eb03]] --> [[tfm02.fb03]] --> [[thm02.hb02]]                |     |
+|       |                    |                                          |     |
+|       |                    v                                          |     |
+|       |              [[tem05.ee02]] (訂單 BOM)                        |     |
+|       |                    |                                          |     |
+|       |                    v                                          |     |
+|       |              [[tgm02.gb03]] (採購)                            |     |
+|       |                                                               |     |
+|  [[tdm05]] ------------------------------------------------------+   |     |
+|  (標準 BOM)               |                                       |  |     |
+|       |                    v                                       |  |     |
+|       +------------> [[tem05]] (訂單 BOM)                          |  |     |
+|                           |                                        |  |     |
+|                           v                                        |  |     |
+|                    採購數量計算                                     |  |     |
+|                           |                                        |  |     |
+|                           v                                        |  |     |
+|                    [[tgm02.gb09]]                                  |  |     |
+|                                                                    |  |     |
+|  [[tfm01.fa01]] --------------------------------------------------+  |     |
+|       |                                                               |     |
+|       +--> [[tfm02.fb01]]                                            |     |
+|       +--> [[tfm03.fc01]]                                            |     |
+|       +--> [[tfm04.fd01]]                                            |     |
+|       +--> [[tfm05.fe01]]                                            |     |
+|       +--> [[tgm01.ga2301]] <-- 連結至 PI                            |     |
+|       +--> [[tgm02.gb2601]] <-- 連結至 PI                            |     |
+|       +--> [[tem05.ee011]] <-- 訂單 BOM 識別碼                       |     |
+|                                                                       |     |
++----------------------------------------------------------------------------+
 ```
 
 ---
 
-## Module Quick Reference
+## 關鍵公式
 
-| Module | Tables | Primary Key | Main Purpose | Next Step |
+### BOM 組件計算
+```
+組件數量 = 訂單數量 * (比例分子 / 比例分母)
+
+標準 BOM: [[tdm05.de03]] / [[tdm05.de04]]
+訂單 BOM: [[tem05.ee04]] / [[tem05.ee05]]
+```
+
+### 材積 (CBM) 計算
+```
+總材積 = 出貨數量 * (外箱材積 / 外箱裝量)
+       = [[tfm03.fc05]] * ([[tfm02.fb25]] / [[tfm02.fb23]])
+```
+
+### 發票金額
+```
+項目金額 = 數量 * 單價
+         = [[thm04.qty]] * [[thm04.unit_price]]
+
+總計 = SUM(項目金額) + 運費 + 保險費 - 折扣
+```
+
+---
+
+## 模組快速參考
+
+| 模組 | 資料表數 | 主鍵 | 主要用途 | 下一步驟 |
 |--------|--------|-------------|--------------|-----------|
-| tam | 26 | varies | System config | - |
-| tsm | 15 | varies | Runtime params | - |
-| tbm | 23 | `[[tbm01.ba01]]` | Customer | tem/tfm |
-| tcm | 15 | `[[tcm01.ca01]]` | Supplier | tgm |
-| tdm | 26 | `[[tdm01.da01]]` | Product/BOM | tem/tfm |
-| tem | 17 | `[[tem01.ea01]]` | Quotation (未使用, tem05除外) | tfm |
-| tfm | 12 | `[[tfm01.fa01]]` | Sales Order | tgm/thm |
-| tgm | 9 | `[[tgm01.ga01]]` | Purchase | thm |
-| thm | 14 | `[[thm01.ha01]]` | Shipment/INV/PKG | tlm |
+| tam | 26 | 各異 | 系統設定 | - |
+| tsm | 15 | 各異 | 執行參數 | - |
+| tbm | 23 | `[[tbm01.ba01]]` | 客戶 | tem/tfm |
+| tcm | 15 | `[[tcm01.ca01]]` | 供應商 | tgm |
+| tdm | 26 | `[[tdm01.da01]]` | 產品/BOM | tem/tfm |
+| tem | 17 | `[[tem01.ea01]]` | 報價 (未使用, tem05除外) | tfm |
+| tfm | 12 | `[[tfm01.fa01]]` | 銷售訂單 | tgm/thm |
+| tgm | 9 | `[[tgm01.ga01]]` | 採購 | thm |
+| thm | 14 | `[[thm01.ha01]]` | 出貨/INVOICE/包裝 | tlm |
 
 ---
 
-## Navigation
+## 導覽
 
-- **Index**: `./_index.yaml` - Field mappings and module registry
-- **Auxiliary**: `./_auxiliary.md` - Support modules (tlm, tqm, tmm, etc.)
-- **Module Details**: `./01-tam.md` through `./09-thm.md`
+- **索引**: `./_index.yaml` - 欄位對應和模組註冊
+- **輔助模組**: `./_auxiliary.md` - 輔助模組 (tlm, tqm, tmm 等)
+- **模組細節**: `./01-tam.md` 至 `./09-thm.md`

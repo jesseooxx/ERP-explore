@@ -1,5 +1,5 @@
-# DataWin ERP T-Module Documentation Index
-# This file serves as the entry point for AI agents navigating the trade module documentation.
+# DataWin ERP T模組文檔索引
+# 此檔案為 AI 代理導覽貿易模組文檔的入口點
 
 schema_version: "1.0"
 updated: "2025-12-26"
@@ -7,168 +7,159 @@ database: "DATAWIN"
 module_prefix: "t"
 
 # =============================================================================
-# NAVIGATION GUIDE FOR AI AGENTS
+# AI 代理導覽指南
 # =============================================================================
-# 1. Start with this file to understand module relationships
-# 2. Read 00-overview.md for complete business flow
-# 3. Use _auxiliary.md for support modules (tlm, tqm, tmm, etc.)
-# 4. Dive into specific module docs (01-09) for field-level details
+# 1. 從此檔案開始了解模組關係
+# 2. 閱讀 00-overview.md 了解完整業務流程
+# 3. 使用 _auxiliary.md 查閱輔助模組 (tlm, tqm, tmm 等)
+# 4. 深入各模組文檔 (01-09) 了解欄位細節
 
 # =============================================================================
-# FIELD REFERENCE CONVENTION
+# 欄位引用格式
 # =============================================================================
-# Format: [[table.field]] or [[table]]
-# Example: [[tfm01.fa01]] refers to field fa01 in table tfm01
+# 格式: [[表格.欄位]] 或 [[表格]]
+# 範例: [[tfm01.fa01]] 指 tfm01 表的 fa01 欄位
 #
-# Field naming pattern: {module_char}{table_seq}{field_seq}
-# - tfm01.fa01 = t(trade) + f(order) + m(module) + 01(table) . f(order) + a(first) + 01(seq)
-# - tgm02.gb03 = t(trade) + g(purchase) + m(module) + 02(detail) . g(purchase) + b(second) + 03(seq)
+# 欄位命名規則: {模組字母}{表序號}{欄位序號}
+# - tfm01.fa01 = t(貿易) + f(訂單) + m(模組) + 01(表) . f(訂單) + a(第一) + 01(序號)
+# - tgm02.gb03 = t(貿易) + g(採購) + m(模組) + 02(明細) . g(採購) + b(第二) + 03(序號)
 
 # =============================================================================
-# MODULE REGISTRY
+# 模組註冊表
 # =============================================================================
 modules:
-  # --- CONFIGURATION LAYER ---
+  # --- 設定層 ---
   tam:
     id: "tam"
-    name: "System Settings"
-    name_zh: "系統設定"
+    name: "系統設定"
     tables: 26
     table_range: "tam01-tam26"
     doc_path: "./01-tam.md"
-    layer: "configuration"
-    provides: [company_info, user_permissions, currency, ports]
+    layer: "設定層"
+    provides: [公司資料, 使用者權限, 幣別, 港口]
 
   tsm:
     id: "tsm"
-    name: "Runtime Parameters"
-    name_zh: "運作參數"
+    name: "運作參數"
     tables: 15
     table_range: "tsm01-tsm13"
     doc_path: "./02-tsm.md"
-    layer: "configuration"
-    provides: [system_params, unit_conversion, report_formats]
+    layer: "設定層"
+    provides: [系統參數, 單位換算, 報表格式]
 
-  # --- MASTER DATA LAYER ---
+  # --- 主檔層 ---
   tbm:
     id: "tbm"
-    name: "Customer Master"
-    name_zh: "客戶主檔"
+    name: "客戶主檔"
     tables: 23
     table_range: "tbm01-tbm23"
     doc_path: "./03-tbm.md"
-    layer: "master_data"
+    layer: "主檔層"
     primary_key: "[[tbm01.ba01]]"
-    provides: [customer_info, contacts, customer_products]
+    provides: [客戶資料, 聯絡人, 客戶產品]
     referenced_by: ["[[tfm01.fa04]]", "[[tem01.ea02]]", "[[thm01.ha04]]", "[[tlm01.customer]]"]
 
   tcm:
     id: "tcm"
-    name: "Supplier Master"
-    name_zh: "供應商主檔"
+    name: "供應商主檔"
     tables: 15
     table_range: "tcm01-tcm15"
     doc_path: "./04-tcm.md"
-    layer: "master_data"
+    layer: "主檔層"
     primary_key: "[[tcm01.ca01]]"
-    provides: [supplier_info, supplier_products]
+    provides: [供應商資料, 供應商產品]
     referenced_by: ["[[tgm01.ga04]]", "[[tdm05.de05]]", "[[tem05.ee06]]"]
 
   tdm:
     id: "tdm"
-    name: "Product Master"
-    name_zh: "產品主檔"
+    name: "產品主檔"
     tables: 26
     table_range: "tdm01-tdm26"
     doc_path: "./05-tdm.md"
-    layer: "master_data"
+    layer: "主檔層"
     primary_key: "[[tdm01.da01]]"
-    provides: [product_info, standard_bom, pricing, packaging]
+    provides: [產品資料, 標準BOM, 售價, 包裝]
     key_tables:
-      tdm01: "Product basic info (85 fields)"
-      tdm05: "Standard BOM (19 fields) - PK: (de01, de02)"
-      tdm08: "Packaging data"
-      tdm09: "Price levels"
+      tdm01: "產品基本資料 (85欄位)"
+      tdm05: "標準BOM (19欄位) - 主鍵: (de01, de02)"
+      tdm08: "包裝資料"
+      tdm09: "售價等級"
 
-  # --- TRANSACTION LAYER ---
+  # --- 交易層 ---
   tem:
     id: "tem"
-    name: "Quotation"
-    name_zh: "報價單"
+    name: "報價單"
     tables: 17
     table_range: "tem01-tem17"
     doc_path: "./06-tem.md"
-    layer: "transaction"
+    layer: "交易層"
     primary_key: "[[tem01.ea01]]"
     flow_sequence: 1
     receives_from: ["[[tbm01]]", "[[tdm01]]"]
     sends_to: ["[[tfm01]]"]
     practical_usage:
-      tem01_tem02: "NOT USED - 報價功能未使用"
-      tem05: "USED - Order BOM storage (從 [[tdm05]] 複製)"
+      tem01_tem02: "未使用 - 報價功能未使用"
+      tem05: "使用中 - 訂單BOM儲存 (從 [[tdm05]] 複製)"
     key_tables:
-      tem01: "Quotation master (53 fields) - NOT USED"
-      tem02: "Quotation detail (47 fields) - NOT USED"
-      tem05: "Order BOM (20 fields) - ACTIVE, copied from [[tdm05]]"
+      tem01: "報價單主檔 (53欄位) - 未使用"
+      tem02: "報價單明細 (47欄位) - 未使用"
+      tem05: "訂單BOM (20欄位) - 使用中，從 [[tdm05]] 複製"
 
   tfm:
     id: "tfm"
-    name: "Sales Order (PI)"
-    name_zh: "銷售訂單"
+    name: "銷售訂單 (PI)"
     tables: 12
     table_range: "tfm01-tfm12"
     doc_path: "./07-tfm.md"
-    layer: "transaction"
+    layer: "交易層"
     primary_key: "[[tfm01.fa01]]"
     flow_sequence: 2
     receives_from: ["[[tem01]]"]
     sends_to: ["[[tgm01]]", "[[thm01]]"]
     key_tables:
-      tfm01: "Order master (99 fields) - PK: fa01"
-      tfm02: "Order detail (67 fields) - PK: (fb01, fb02)"
-      tfm03: "Shipment schedule detail - PK: (fc01, fc02, fc031, fc04, ...)"
-      tfm04: "Shipment schedule summary - PK: (fd01, fd02, fd03)"
-      tfm05: "Order-Purchase link - PK: (fe01, fe03, fe04, fe07, fe25)"
+      tfm01: "訂單主檔 (99欄位) - 主鍵: fa01"
+      tfm02: "訂單明細 (67欄位) - 主鍵: (fb01, fb02)"
+      tfm03: "出貨排程明細 - 主鍵: (fc01, fc02, fc031, fc04, ...)"
+      tfm04: "出貨排程彙總 - 主鍵: (fd01, fd02, fd03)"
+      tfm05: "訂單採購連結 - 主鍵: (fe01, fe03, fe04, fe07, fe25)"
 
   tgm:
     id: "tgm"
-    name: "Purchase Order (PO)"
-    name_zh: "採購單"
+    name: "採購單 (PO)"
     tables: 9
     table_range: "tgm01-tgm09"
     doc_path: "./08-tgm.md"
-    layer: "transaction"
+    layer: "交易層"
     primary_key: "[[tgm01.ga01]]"
     flow_sequence: 3
     receives_from: ["[[tfm01]]", "[[tem05]]"]
     sends_to: ["[[thm01]]"]
     key_tables:
-      tgm01: "Purchase master (99 fields) - links to [[tfm01.fa01]] via ga2301"
-      tgm02: "Purchase detail (59 fields) - links to [[tfm01.fa01]] via gb2601"
-      tgm03: "Purchase batch (26 fields)"
-      tgm04: "Purchase summary (10 fields)"
+      tgm01: "採購主檔 (99欄位) - 透過 ga2301 連結 [[tfm01.fa01]]"
+      tgm02: "採購明細 (59欄位) - 透過 gb2601 連結 [[tfm01.fa01]]"
+      tgm03: "採購分批 (26欄位)"
+      tgm04: "採購彙總 (10欄位)"
 
   thm:
     id: "thm"
-    name: "Shipment (INV/PKG)"
-    name_zh: "出貨/發票/裝箱"
+    name: "出貨/發票/裝箱"
     tables: 14
     table_range: "thm01-thm15"
     doc_path: "./09-thm.md"
-    layer: "transaction"
+    layer: "交易層"
     primary_key: "[[thm01.ha01]]"
     flow_sequence: 4
     receives_from: ["[[tfm01]]", "[[tgm01]]"]
     sends_to: ["[[tlm01]]", "[[trm01]]"]
     key_tables:
-      thm01: "Shipment master (141 fields) - INVOICE header"
-      thm02: "Shipment PI items (13 fields)"
-      thm03: "Packing items (38 fields)"
-      thm04: "Invoice items (22 fields)"
-      thm05: "Component cost (11 fields)"
-      thm06: "Shipping mark (7 fields)"
-      thm07: "Item sub-description"
-      thm08: "Extra charges"
+      thm01: "出貨主檔 (141欄位) - INVOICE表頭"
+      thm02: "出貨PI項目 (13欄位)"
+      thm03: "裝箱項目 (38欄位)"
+      thm04: "發票項目 (22欄位)"
+      thm05: "零件成本 (11欄位)"
+      thm06: "嘜頭 (7欄位)"
+      thm07: "項目子描述"
+      thm08: "額外費用"
     outputs:
       - type: "INVOICE"
         storage: "[[thm01]], [[thm02]], [[thm04]]"
@@ -177,70 +168,71 @@ modules:
       - type: "SHIPPING_MARK"
         storage: "[[thm06]]"
 
-  # --- AUXILIARY (consolidated in _auxiliary.md) ---
+  # --- 輔助模組 (整合於 _auxiliary.md) ---
   auxiliary:
     doc_path: "./_auxiliary.md"
     modules:
-      tlm: {tables: 20, purpose: "Accounts R/P", triggers_from: "[[thm01]], [[tgm01]]"}
-      tqm: {tables: 26, purpose: "Specs/Expediting/Catalog"}
-      tmm: {tables: 30, purpose: "Statistics/Reporting"}
-      trm: {tables: 2, purpose: "Shipment Analysis"}
-      tjm: {tables: 2, purpose: "Claims/Disputes"}
-      tpm: {tables: 2, purpose: "Transfer Tracking"}
-      tnm: {tables: 4, purpose: "History Archive"}
+      tlm: {tables: 20, purpose: "應收應付帳款", triggers_from: "[[thm01]], [[tgm01]]"}
+      tqm: {tables: 26, purpose: "規格/催貨/型錄"}
+      tmm: {tables: 30, purpose: "統計報表"}
+      trm: {tables: 2, purpose: "出貨分析"}
+      tjm: {tables: 2, purpose: "索賠管理"}
+      tpm: {tables: 2, purpose: "拋轉記錄"}
+      tnm: {tables: 4, purpose: "歷史歸檔"}
 
 # =============================================================================
-# PRIMARY BUSINESS FLOW
+# 主要業務流程
 # =============================================================================
 business_flow:
-  name: "Export Trade Flow"
+  name: "出口貿易流程"
   sequence:
     - step: 1
       module: "tem"
-      action: "Create Quotation"
+      action: "建立報價單"
       inputs: ["[[tbm01.ba01]]", "[[tdm01.da01]]"]
       outputs: ["[[tem01.ea01]]", "[[tem02]]", "[[tem05]]"]
 
     - step: 2
       module: "tfm"
-      action: "Create Sales Order (PI)"
+      action: "建立銷售訂單 (PI)"
       inputs: ["[[tem01.ea01]]"]
       outputs: ["[[tfm01.fa01]]", "[[tfm02]]"]
-      triggers: ["Copy BOM from [[tdm05]] to [[tem05]]"]
+      triggers: ["從 [[tdm05]] 複製 BOM 到 [[tem05]]"]
 
     - step: 3
       module: "tfm"
-      action: "Schedule Shipment"
+      action: "排程出貨"
       inputs: ["[[tfm01.fa01]]", "[[tfm02]]"]
       outputs: ["[[tfm03]]", "[[tfm04]]"]
 
     - step: 4
       module: "tgm"
-      action: "Generate Purchase Order"
+      action: "產生採購單"
       inputs: ["[[tfm02]]", "[[tem05]]"]
       outputs: ["[[tgm01.ga01]]", "[[tgm02]]"]
-      calculation: "Purchase Qty = [[tfm02.fb09]] * ([[tem05.ee04]] / [[tem05.ee05]])"
+      calculation: "採購數量 = [[tfm02.fb09]] * ([[tem05.ee04]] / [[tem05.ee05]])"
       link_fields:
         - "[[tgm01.ga2301]] = [[tfm01.fa01]]"
         - "[[tgm02.gb2601]] = [[tfm01.fa01]]"
 
     - step: 5
       module: "thm"
-      action: "Create Shipment (INVOICE + Packing)"
+      action: "建立出貨 (INVOICE + 裝箱)"
       inputs: ["[[tfm01.fa01]]", "[[tfm02]]", "[[tgm01.ga01]]"]
       outputs: ["[[thm01.ha01]]", "[[thm02]]", "[[thm03]]", "[[thm04]]", "[[thm06]]"]
       documents:
         - "INVOICE"
         - "PACKING LIST"
         - "SHIPPING MARK"
-      triggers: ["Auto-create AR in [[tlm01]]"]
+      triggers: ["自動建立應收帳款於 [[tlm01]]"]
 
 # =============================================================================
-# KEY FIELD MAPPINGS (Cross-Module FK Relationships)
+# 關鍵欄位對應 (跨模組 FK 關係)
 # =============================================================================
 field_mappings:
   customer_chain:
     master: "[[tbm01.ba01]]"
+    description: "客戶代碼連結鏈"
     references:
       - "[[tem01.ea02]]"
       - "[[tfm01.fa04]]"
@@ -249,6 +241,7 @@ field_mappings:
 
   supplier_chain:
     master: "[[tcm01.ca01]]"
+    description: "供應商代碼連結鏈"
     references:
       - "[[tdm05.de05]]"
       - "[[tem05.ee06]]"
@@ -256,6 +249,7 @@ field_mappings:
 
   product_chain:
     master: "[[tdm01.da01]]"
+    description: "產品代碼連結鏈"
     references:
       - "[[tdm05.de01]]"
       - "[[tem02.eb03]]"
@@ -265,6 +259,7 @@ field_mappings:
 
   order_chain:
     master: "[[tfm01.fa01]]"
+    description: "訂單編號連結鏈"
     references:
       - "[[tfm02.fb01]]"
       - "[[tfm03.fc01]]"
@@ -275,13 +270,13 @@ field_mappings:
       - "[[tem05.ee011]]"
 
   bom_chain:
-    standard_bom: "[[tdm05]] - PK: (de01, de02)"
-    order_bom: "[[tem05]] - PK: (ee011, ee02, ee03)"
-    copy_trigger: "On [[tfm02]] insert, copy from [[tdm05]] to [[tem05]]"
-    calculation: "Component Qty = Order Qty * (ratio_num / ratio_denom)"
+    standard_bom: "[[tdm05]] - 主鍵: (de01, de02)"
+    order_bom: "[[tem05]] - 主鍵: (ee011, ee02, ee03)"
+    copy_trigger: "[[tfm02]] 新增時，從 [[tdm05]] 複製到 [[tem05]]"
+    calculation: "零件數量 = 訂購數量 * (比例分子 / 比例分母)"
 
 # =============================================================================
-# DATE FORMAT
+# 日期格式
 # =============================================================================
 date_format:
   storage: "VARCHAR(8)"
@@ -289,7 +284,7 @@ date_format:
   examples: ["20251226", "20170101"]
 
 # =============================================================================
-# DOCUMENT FILES
+# 文檔檔案
 # =============================================================================
 documents:
   overview: "./00-overview.md"

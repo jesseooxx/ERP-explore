@@ -1,4 +1,4 @@
-# TCM - Supplier Master
+# TCM - 供應商主檔
 
 ```yaml
 ---
@@ -14,186 +14,186 @@ index: "./_index.yaml"
 ---
 ```
 
-## Module Overview
+## 模組概述
 
-TCM manages supplier master data and supplier-product relationships. The primary key `[[tcm01.ca01]]` links to purchase orders and BOM definitions.
-
----
-
-## Table Registry
-
-| Table | Purpose | Primary Key |
-|-------|---------|-------------|
-| tcm01 | **Supplier master** | `ca01` |
-| tcm02 | Supplier contacts | `(cb01, cb02)` |
-| tcm03 | Supplier addresses | `(cc01, cc02)` |
-| tcm04 | Supplier bank info | `(cd01, cd02)` |
-| tcm05 | **Supplier-product link** | `(ce010, ce011, ce02, ce04)` |
-| tcm06 | Supplier price history | - |
-| tcm07 | Supplier performance | - |
-| tcm08-15 | Reserved/Misc | - |
+TCM 管理供應商主檔資料及供應商-產品關聯。主鍵 `[[tcm01.ca01]]` 連結至採購單和 BOM 定義。
 
 ---
 
-## TCM01 - Supplier Master
+## 資料表清單
 
-### Field Definition
+| 資料表 | 用途 | 主鍵 |
+|-------|------|------|
+| tcm01 | **供應商主檔** | `ca01` |
+| tcm02 | 供應商聯絡人 | `(cb01, cb02)` |
+| tcm03 | 供應商地址 | `(cc01, cc02)` |
+| tcm04 | 供應商銀行資訊 | `(cd01, cd02)` |
+| tcm05 | **供應商-產品關聯** | `(ce010, ce011, ce02, ce04)` |
+| tcm06 | 供應商價格歷史 | - |
+| tcm07 | 供應商績效 | - |
+| tcm08-15 | 保留/其他 | - |
+
+---
+
+## TCM01 - 供應商主檔
+
+### 欄位定義
 
 ```yaml
 table: tcm01
-name: "Supplier Master"
+name: "供應商主檔"
 primary_key: ca01
 total_fields: ~45
 ```
 
-| Field | Type | Description | Referenced By |
-|-------|------|-------------|---------------|
-| `ca01` | varchar(10) | **Supplier code** (PK) | `[[tgm01.ga04]]`, `[[tem05.ee06]]`, `[[tdm05.de05]]` |
-| `ca02` | varchar(50) | Supplier name | |
-| `ca03` | varchar(100) | Address line 1 | |
-| `ca04` | varchar(100) | Address line 2 | |
-| `ca05` | varchar(10) | Country | |
-| `ca06` | varchar(20) | Phone | |
-| `ca07` | varchar(50) | Email | |
-| `ca08` | varchar(5) | Currency | `[[tam08.ha01]]` |
-| `ca09` | varchar(10) | Payment terms | |
-| `ca10` | int | Lead time (days) | |
-| `ca11` | char(1) | Active (Y/N) | |
+| 欄位 | 類型 | 說明 | 被參照於 |
+|------|------|------|----------|
+| `ca01` | varchar(10) | **供應商代碼** (主鍵) | `[[tgm01.ga04]]`, `[[tem05.ee06]]`, `[[tdm05.de05]]` |
+| `ca02` | varchar(50) | 供應商名稱 | |
+| `ca03` | varchar(100) | 地址第一行 | |
+| `ca04` | varchar(100) | 地址第二行 | |
+| `ca05` | varchar(10) | 國家 | |
+| `ca06` | varchar(20) | 電話 | |
+| `ca07` | varchar(50) | 電子郵件 | |
+| `ca08` | varchar(5) | 幣別 | `[[tam08.ha01]]` |
+| `ca09` | varchar(10) | 付款條件 | |
+| `ca10` | int | 交期(天) | |
+| `ca11` | char(1) | 啟用 (Y/N) | |
 
 ---
 
-## TCM05 - Supplier-Product Link
+## TCM05 - 供應商-產品關聯
 
-### Field Definition
+### 欄位定義
 
 ```yaml
 table: tcm05
-name: "Supplier-Product Relationship"
+name: "供應商-產品關聯"
 primary_key: "(ce010, ce011, ce02, ce04)"
-purpose: "Links products to suppliers with pricing"
+purpose: "連結產品與供應商及定價"
 ```
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `ce010` | varchar(10) | **Supplier code** -> `[[tcm01.ca01]]` |
-| `ce011` | varchar(10) | Qualifier |
-| `ce02` | varchar(20) | **Product/Component code** -> `[[tdm01.da01]]` |
-| `ce03` | varchar(30) | Supplier's part number |
-| `ce04` | int | Sequence |
-| `ce05` | float | Unit price |
-| `ce06` | varchar(5) | Currency |
-| `ce07` | int | MOQ (Min Order Qty) |
-| `ce08` | int | Lead time (days) |
+| 欄位 | 類型 | 說明 |
+|------|------|------|
+| `ce010` | varchar(10) | **供應商代碼** -> `[[tcm01.ca01]]` |
+| `ce011` | varchar(10) | 限定詞 |
+| `ce02` | varchar(20) | **產品/零件代碼** -> `[[tdm01.da01]]` |
+| `ce03` | varchar(30) | 供應商料號 |
+| `ce04` | int | 序號 |
+| `ce05` | float | 單價 |
+| `ce06` | varchar(5) | 幣別 |
+| `ce07` | int | 最小訂購量(MOQ) |
+| `ce08` | int | 交期(天) |
 
 ---
 
-## Cross-Module References
+## 跨模組參照
 
-### Supplier Reference Chain
+### 供應商參照鏈
 
 ```yaml
 master: "[[tcm01.ca01]]"
 referenced_by:
-  tdm: "[[tdm05.de05]] - Standard BOM supplier"
-  tem: "[[tem05.ee06]] - Order BOM supplier"
-  tgm: "[[tgm01.ga04]] - Purchase Order supplier"
-  tlm: "[[tlm09.supplier]] - AP supplier"
+  tdm: "[[tdm05.de05]] - 標準 BOM 供應商"
+  tem: "[[tem05.ee06]] - 訂單 BOM 供應商"
+  tgm: "[[tgm01.ga04]] - 採購單供應商"
+  tlm: "[[tlm09.supplier]] - 應付帳款供應商"
 ```
 
-### Data Flow
+### 資料流程
 
 ```
-[[tcm01.ca01]] (Supplier Master)
+[[tcm01.ca01]] (供應商主檔)
       |
-      +---> [[tdm05.de05]] (Standard BOM)
+      +---> [[tdm05.de05]] (標準 BOM)
       |           |
-      |           v (copy on order creation)
-      +---> [[tem05.ee06]] (Order BOM)
+      |           v (建立訂單時複製)
+      +---> [[tem05.ee06]] (訂單 BOM)
       |           |
-      |           v (generate PO)
-      +---> [[tgm01.ga04]] (Purchase Order)
+      |           v (產生採購單)
+      +---> [[tgm01.ga04]] (採購單)
                   |
-                  v (auto-create on save)
-            [[tlm09]] (AP)
+                  v (儲存時自動建立)
+            [[tlm09]] (應付帳款)
 ```
 
 ---
 
-## Relationship with BOM
+## 與 BOM 的關係
 
-### Standard BOM (tdm05)
+### 標準 BOM (tdm05)
 
 ```yaml
 table: "[[tdm05]]"
 pk: "(de01, de02)"
 supplier_field: "[[tdm05.de05]]"
-usage: "Default supplier for each component"
+usage: "每個零件的預設供應商"
 ```
 
-### Order BOM (tem05)
+### 訂單 BOM (tem05)
 
 ```yaml
 table: "[[tem05]]"
 pk: "(ee011, ee02, ee03)"
 supplier_field: "[[tem05.ee06]]"
-usage: "Order-specific supplier (may differ from standard)"
-trigger: "Copied from [[tdm05]] when order created"
+usage: "訂單專屬供應商 (可能與標準不同)"
+trigger: "建立訂單時從 [[tdm05]] 複製"
 ```
 
 ---
 
-## Common Queries
+## 常用查詢
 
-### Get Supplier with Products
+### 取得供應商及其產品
 
 ```sql
 SELECT
-    s.ca01 AS [Supplier],
-    s.ca02 AS [Name],
-    sp.ce02 AS [Product],
-    sp.ce05 AS [Price],
-    sp.ce08 AS [LeadTime]
+    s.ca01 AS [供應商],
+    s.ca02 AS [名稱],
+    sp.ce02 AS [產品],
+    sp.ce05 AS [價格],
+    sp.ce08 AS [交期]
 FROM [[tcm01]] s
 INNER JOIN [[tcm05]] sp ON sp.ce010 = s.ca01
-WHERE s.ca11 = 'Y'  -- Active suppliers
+WHERE s.ca11 = 'Y'  -- 啟用的供應商
 ORDER BY s.ca01, sp.ce02
 ```
 
-### Get Supplier Purchase History
+### 取得供應商採購歷史
 
 ```sql
 SELECT
-    s.ca01 AS [Supplier],
-    s.ca02 AS [Name],
-    COUNT(p.ga01) AS [PO_Count],
-    SUM(p.ga37) AS [Total_Amount]
+    s.ca01 AS [供應商],
+    s.ca02 AS [名稱],
+    COUNT(p.ga01) AS [採購單數],
+    SUM(p.ga37) AS [總金額]
 FROM [[tcm01]] s
 LEFT JOIN [[tgm01]] p ON p.ga04 = s.ca01
 WHERE s.ca11 = 'Y'
 GROUP BY s.ca01, s.ca02
-ORDER BY [Total_Amount] DESC
+ORDER BY [總金額] DESC
 ```
 
-### Find Suppliers for Component
+### 查詢零件的供應商
 
 ```sql
 SELECT
-    sp.ce010 AS [Supplier],
-    s.ca02 AS [Supplier_Name],
-    sp.ce03 AS [Supplier_PN],
-    sp.ce05 AS [Price],
-    sp.ce07 AS [MOQ],
-    sp.ce08 AS [LeadTime]
+    sp.ce010 AS [供應商],
+    s.ca02 AS [供應商名稱],
+    sp.ce03 AS [供應商料號],
+    sp.ce05 AS [價格],
+    sp.ce07 AS [最小訂購量],
+    sp.ce08 AS [交期]
 FROM [[tcm05]] sp
 INNER JOIN [[tcm01]] s ON s.ca01 = sp.ce010
 WHERE sp.ce02 = @ComponentCode
-ORDER BY sp.ce05  -- by price
+ORDER BY sp.ce05  -- 依價格排序
 ```
 
 ---
 
-## Navigation
+## 導覽
 
-- **Previous**: `./03-tbm.md` (Customer Master)
-- **Next**: `./05-tdm.md` (Product Master)
-- **Index**: `./_index.yaml`
+- **上一篇**: `./03-tbm.md` (客戶主檔)
+- **下一篇**: `./05-tdm.md` (產品主檔)
+- **索引**: `./_index.yaml`

@@ -1,4 +1,4 @@
-# TBM - Customer Master
+# TBM - 客戶主檔
 
 ```yaml
 ---
@@ -14,136 +14,137 @@ index: "./_index.yaml"
 ---
 ```
 
-## Module Overview
+## 模組概述
 
-TBM manages customer master data including company info, contacts, addresses, and customer-specific product configurations. The primary key `[[tbm01.ba01]]` is referenced throughout all transaction modules.
+TBM 管理客戶主檔資料，包括公司資訊、聯絡人、地址及客戶專屬產品設定。主鍵 `[[tbm01.ba01]]` 在所有交易模組中被參照。
 
 ---
 
-## Table Registry
+## 資料表清單
 
-| Table | Purpose | Primary Key |
+| 資料表 | 用途 | 主鍵 |
 |-------|---------|-------------|
-| tbm01 | **Customer master** | `ba01` |
-| tbm02 | Customer contacts | `(bb01, bb02)` |
-| tbm03 | Customer addresses | `(bc01, bc02)` |
-| tbm04 | Customer bank info | `(bd01, bd02)` |
-| tbm05 | Customer-product link | `(be01, be02)` |
-| tbm06 | Customer price level | `(bf01, bf02)` |
-| tbm07 | Payment history | `(bg01, bg02)` |
-| tbm08-10 | Credit management | - |
-| tbm11-15 | Customer categories | - |
-| tbm16-20 | Customer preferences | - |
-| tbm21-23 | Reserved | - |
+| tbm01 | **客戶主檔** | `ba01` |
+| tbm02 | 客戶聯絡人 | `(bb01, bb02)` |
+| tbm03 | 客戶地址 | `(bc01, bc02)` |
+| tbm04 | 客戶銀行資訊 | `(bd01, bd02)` |
+| tbm05 | 客戶-產品連結 | `(be01, be02)` |
+| tbm06 | 客戶價格層級 | `(bf01, bf02)` |
+| tbm07 | 付款歷史 | `(bg01, bg02)` |
+| tbm08-10 | 信用管理 | - |
+| tbm11-15 | 客戶分類 | - |
+| tbm16-20 | 客戶偏好設定 | - |
+| tbm21-23 | 保留 | - |
 
 ---
 
-## TBM01 - Customer Master
+## TBM01 - 客戶主檔
 
-### Field Definition
+### 欄位定義
 
 ```yaml
 table: tbm01
-name: "Customer Master"
+name: "客戶主檔"
 primary_key: ba01
 total_fields: ~50
 ```
 
-| Field | Type | Description | Referenced By |
+| 欄位 | 類型 | 說明 | 被參照於 |
 |-------|------|-------------|---------------|
-| `ba01` | varchar(10) | **Customer code** (PK) | `[[tfm01.fa04]]`, `[[tem01.ea02]]`, `[[thm01.ha04]]` |
-| `ba02` | varchar(50) | Customer name | |
-| `ba03` | varchar(100) | Address line 1 | |
-| `ba04` | varchar(100) | Address line 2 | |
-| `ba05` | varchar(10) | Country | |
-| `ba06` | varchar(20) | Phone | |
-| `ba07` | varchar(50) | Email | |
-| `ba08` | varchar(5) | Currency preference | `[[tam08.ha01]]` |
-| `ba09` | varchar(10) | Payment terms | `[[tam11]]` |
-| `ba10` | varchar(10) | Sales rep | |
-| `ba11` | float | Credit limit | |
-| `ba12` | char(1) | Active (Y/N) | |
+| `ba01` | varchar(10) | **客戶代碼** (主鍵) | `[[tfm01.fa04]]`, `[[tem01.ea02]]`, `[[thm01.ha04]]` |
+| `ba02` | varchar(50) | 客戶名稱 | |
+| `ba03` | varchar(100) | 地址第一行 | |
+| `ba04` | varchar(100) | 地址第二行 | |
+| `ba05` | varchar(10) | 國家 | |
+| `ba06` | varchar(20) | 電話 | |
+| `ba07` | varchar(50) | 電子郵件 | |
+| `ba08` | varchar(5) | 幣別偏好 | `[[tam08.ha01]]` |
+| `ba09` | varchar(10) | 付款條件 | `[[tam11]]` |
+| `ba10` | varchar(10) | 業務代表 | |
+| `ba11` | float | 信用額度 | |
+| `ba12` | char(1) | 啟用 (Y/N) | |
 
 ---
 
-## TBM02 - Customer Contacts
+## TBM02 - 客戶聯絡人
 
 ```yaml
 table: tbm02
-name: "Customer Contacts"
+name: "客戶聯絡人"
 primary_key: "(bb01, bb02)"
 ```
 
-| Field | Type | Description |
+| 欄位 | 類型 | 說明 |
 |-------|------|-------------|
-| `bb01` | varchar(10) | **Customer code** -> `[[tbm01.ba01]]` |
-| `bb02` | int | Contact sequence |
-| `bb03` | varchar(30) | Contact name |
-| `bb04` | varchar(30) | Title/Position |
-| `bb05` | varchar(20) | Phone |
-| `bb06` | varchar(50) | Email |
-| `bb07` | char(1) | Primary contact (Y/N) |
+| `bb01` | varchar(10) | **客戶代碼** -> `[[tbm01.ba01]]` |
+| `bb02` | int | 聯絡人序號 |
+| `bb03` | varchar(30) | 聯絡人姓名 |
+| `bb04` | varchar(30) | 職稱/職位 |
+| `bb05` | varchar(20) | 電話 |
+| `bb06` | varchar(50) | 電子郵件 |
+| `bb07` | char(1) | 主要聯絡人 (Y/N) |
 
 ---
 
-## TBM05 - Customer-Product Link
+## TBM05 - 客戶-產品連結
 
 ```yaml
 table: tbm05
-name: "Customer-specific Product Settings"
+name: "客戶專屬產品設定"
 primary_key: "(be01, be02)"
-purpose: "Customer-specific product codes, pricing"
+purpose: "客戶專屬產品代碼、價格"
 ```
 
-| Field | Type | Description |
+| 欄位 | 類型 | 說明 |
 |-------|------|-------------|
-| `be01` | varchar(10) | **Customer code** -> `[[tbm01.ba01]]` |
-| `be02` | varchar(20) | **Product code** -> `[[tdm01.da01]]` |
-| `be03` | varchar(30) | Customer's product code |
-| `be04` | varchar(50) | Customer's product name |
-| `be05` | float | Customer-specific price |
-| `be06` | varchar(5) | Currency |
+| `be01` | varchar(10) | **客戶代碼** -> `[[tbm01.ba01]]` |
+| `be02` | varchar(20) | **產品代碼** -> `[[tdm01.da01]]` |
+| `be03` | varchar(30) | 客戶產品代碼 |
+| `be04` | varchar(50) | 客戶產品名稱 |
+| `be05` | float | 客戶專屬價格 |
+| `be06` | varchar(5) | 幣別 |
 
 ---
 
-## Cross-Module References
+## 跨模組參照
 
-### Customer Reference Chain
+### 客戶參照鏈
 
 ```yaml
 master: "[[tbm01.ba01]]"
 referenced_by:
-  tem: "[[tem01.ea02]] - Quotation customer"
-  tfm: "[[tfm01.fa04]] - Order customer"
-  thm: "[[thm01.ha04]] - Invoice customer"
-  tlm: "[[tlm01.customer]] - AR customer"
-  tgm: "[[tgm01.ga13]] - Indirect (order's customer)"
+  tem: "[[tem01.ea02]] - 報價單客戶"
+  tfm: "[[tfm01.fa04]] - 訂單客戶"
+  thm: "[[thm01.ha04]] - 發票客戶"
+  tlm: "[[tlm01.customer]] - 應收帳款客戶"
+  tgm: "[[tgm01.ga13]] - 間接 (訂單的客戶)"
 ```
 
-### Data Flow
+### 資料流程
 
 ```
-[[tbm01.ba01]] (Customer Master)
+[[tbm01.ba01]] (客戶主檔)
       |
-      +---> [[tem01.ea02]] (Quotation)
+      +---> [[tem01.ea02]] (報價單)
       |           |
       |           v
-      +---> [[tfm01.fa04]] (Order)
+      +---> [[tfm01.fa04]] (訂單)
       |           |
       |           v
-      +---> [[thm01.ha04]] (Invoice)
+      +---> [[thm01.ha04]] (發票)
                   |
                   v
-            [[tlm01]] (AR)
+            [[tlm01]] (應收帳款)
 ```
 
 ---
 
-## Common Queries
+## 常用查詢
 
-### Get Customer with Orders
+### 查詢客戶與訂單
 
 ```sql
+-- 查詢啟用客戶及其訂單統計
 SELECT
     c.ba01 AS [Customer],
     c.ba02 AS [Name],
@@ -151,14 +152,15 @@ SELECT
     SUM(o.fa25) AS [Total_Amount]
 FROM [[tbm01]] c
 LEFT JOIN [[tfm01]] o ON o.fa04 = c.ba01
-WHERE c.ba12 = 'Y'  -- Active customers
+WHERE c.ba12 = 'Y'  -- 啟用客戶
 GROUP BY c.ba01, c.ba02
 ORDER BY [Total_Amount] DESC
 ```
 
-### Get Customer Products
+### 查詢客戶產品
 
 ```sql
+-- 查詢指定客戶的專屬產品設定
 SELECT
     c.ba01 AS [Customer],
     cp.be02 AS [Product_Code],
@@ -173,8 +175,8 @@ WHERE c.ba01 = @CustomerCode
 
 ---
 
-## Navigation
+## 導覽
 
-- **Previous**: `./02-tsm.md` (Runtime Parameters)
-- **Next**: `./04-tcm.md` (Supplier Master)
-- **Index**: `./_index.yaml`
+- **上一頁**: `./02-tsm.md` (運作參數)
+- **下一頁**: `./04-tcm.md` (供應商主檔)
+- **索引**: `./_index.yaml`
