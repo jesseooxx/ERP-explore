@@ -1,0 +1,306 @@
+# DataWin ERP T-Module Documentation Index
+# This file serves as the entry point for AI agents navigating the trade module documentation.
+
+schema_version: "1.0"
+updated: "2025-12-26"
+database: "DATAWIN"
+module_prefix: "t"
+
+# =============================================================================
+# NAVIGATION GUIDE FOR AI AGENTS
+# =============================================================================
+# 1. Start with this file to understand module relationships
+# 2. Read 00-overview.md for complete business flow
+# 3. Use _auxiliary.md for support modules (tlm, tqm, tmm, etc.)
+# 4. Dive into specific module docs (01-09) for field-level details
+
+# =============================================================================
+# FIELD REFERENCE CONVENTION
+# =============================================================================
+# Format: [[table.field]] or [[table]]
+# Example: [[tfm01.fa01]] refers to field fa01 in table tfm01
+#
+# Field naming pattern: {module_char}{table_seq}{field_seq}
+# - tfm01.fa01 = t(trade) + f(order) + m(module) + 01(table) . f(order) + a(first) + 01(seq)
+# - tgm02.gb03 = t(trade) + g(purchase) + m(module) + 02(detail) . g(purchase) + b(second) + 03(seq)
+
+# =============================================================================
+# MODULE REGISTRY
+# =============================================================================
+modules:
+  # --- CONFIGURATION LAYER ---
+  tam:
+    id: "tam"
+    name: "System Settings"
+    name_zh: "系統設定"
+    tables: 26
+    table_range: "tam01-tam26"
+    doc_path: "./01-tam.md"
+    layer: "configuration"
+    provides: [company_info, user_permissions, currency, ports]
+
+  tsm:
+    id: "tsm"
+    name: "Runtime Parameters"
+    name_zh: "運作參數"
+    tables: 15
+    table_range: "tsm01-tsm13"
+    doc_path: "./02-tsm.md"
+    layer: "configuration"
+    provides: [system_params, unit_conversion, report_formats]
+
+  # --- MASTER DATA LAYER ---
+  tbm:
+    id: "tbm"
+    name: "Customer Master"
+    name_zh: "客戶主檔"
+    tables: 23
+    table_range: "tbm01-tbm23"
+    doc_path: "./03-tbm.md"
+    layer: "master_data"
+    primary_key: "[[tbm01.ba01]]"
+    provides: [customer_info, contacts, customer_products]
+    referenced_by: ["[[tfm01.fa04]]", "[[tem01.ea02]]", "[[thm01.ha04]]", "[[tlm01.customer]]"]
+
+  tcm:
+    id: "tcm"
+    name: "Supplier Master"
+    name_zh: "供應商主檔"
+    tables: 15
+    table_range: "tcm01-tcm15"
+    doc_path: "./04-tcm.md"
+    layer: "master_data"
+    primary_key: "[[tcm01.ca01]]"
+    provides: [supplier_info, supplier_products]
+    referenced_by: ["[[tgm01.ga04]]", "[[tdm05.de05]]", "[[tem05.ee06]]"]
+
+  tdm:
+    id: "tdm"
+    name: "Product Master"
+    name_zh: "產品主檔"
+    tables: 26
+    table_range: "tdm01-tdm26"
+    doc_path: "./05-tdm.md"
+    layer: "master_data"
+    primary_key: "[[tdm01.da01]]"
+    provides: [product_info, standard_bom, pricing, packaging]
+    key_tables:
+      tdm01: "Product basic info (85 fields)"
+      tdm05: "Standard BOM (19 fields) - PK: (de01, de02)"
+      tdm08: "Packaging data"
+      tdm09: "Price levels"
+
+  # --- TRANSACTION LAYER ---
+  tem:
+    id: "tem"
+    name: "Quotation"
+    name_zh: "報價單"
+    tables: 17
+    table_range: "tem01-tem17"
+    doc_path: "./06-tem.md"
+    layer: "transaction"
+    primary_key: "[[tem01.ea01]]"
+    flow_sequence: 1
+    receives_from: ["[[tbm01]]", "[[tdm01]]"]
+    sends_to: ["[[tfm01]]"]
+    practical_usage:
+      tem01_tem02: "NOT USED - 報價功能未使用"
+      tem05: "USED - Order BOM storage (從 [[tdm05]] 複製)"
+    key_tables:
+      tem01: "Quotation master (53 fields) - NOT USED"
+      tem02: "Quotation detail (47 fields) - NOT USED"
+      tem05: "Order BOM (20 fields) - ACTIVE, copied from [[tdm05]]"
+
+  tfm:
+    id: "tfm"
+    name: "Sales Order (PI)"
+    name_zh: "銷售訂單"
+    tables: 12
+    table_range: "tfm01-tfm12"
+    doc_path: "./07-tfm.md"
+    layer: "transaction"
+    primary_key: "[[tfm01.fa01]]"
+    flow_sequence: 2
+    receives_from: ["[[tem01]]"]
+    sends_to: ["[[tgm01]]", "[[thm01]]"]
+    key_tables:
+      tfm01: "Order master (99 fields) - PK: fa01"
+      tfm02: "Order detail (67 fields) - PK: (fb01, fb02)"
+      tfm03: "Shipment schedule detail - PK: (fc01, fc02, fc031, fc04, ...)"
+      tfm04: "Shipment schedule summary - PK: (fd01, fd02, fd03)"
+      tfm05: "Order-Purchase link - PK: (fe01, fe03, fe04, fe07, fe25)"
+
+  tgm:
+    id: "tgm"
+    name: "Purchase Order (PO)"
+    name_zh: "採購單"
+    tables: 9
+    table_range: "tgm01-tgm09"
+    doc_path: "./08-tgm.md"
+    layer: "transaction"
+    primary_key: "[[tgm01.ga01]]"
+    flow_sequence: 3
+    receives_from: ["[[tfm01]]", "[[tem05]]"]
+    sends_to: ["[[thm01]]"]
+    key_tables:
+      tgm01: "Purchase master (99 fields) - links to [[tfm01.fa01]] via ga2301"
+      tgm02: "Purchase detail (59 fields) - links to [[tfm01.fa01]] via gb2601"
+      tgm03: "Purchase batch (26 fields)"
+      tgm04: "Purchase summary (10 fields)"
+
+  thm:
+    id: "thm"
+    name: "Shipment (INV/PKG)"
+    name_zh: "出貨/發票/裝箱"
+    tables: 14
+    table_range: "thm01-thm15"
+    doc_path: "./09-thm.md"
+    layer: "transaction"
+    primary_key: "[[thm01.ha01]]"
+    flow_sequence: 4
+    receives_from: ["[[tfm01]]", "[[tgm01]]"]
+    sends_to: ["[[tlm01]]", "[[trm01]]"]
+    key_tables:
+      thm01: "Shipment master (141 fields) - INVOICE header"
+      thm02: "Shipment PI items (13 fields)"
+      thm03: "Packing items (38 fields)"
+      thm04: "Invoice items (22 fields)"
+      thm05: "Component cost (11 fields)"
+      thm06: "Shipping mark (7 fields)"
+      thm07: "Item sub-description"
+      thm08: "Extra charges"
+    outputs:
+      - type: "INVOICE"
+        storage: "[[thm01]], [[thm02]], [[thm04]]"
+      - type: "PACKING_LIST"
+        storage: "[[thm01]], [[thm03]]"
+      - type: "SHIPPING_MARK"
+        storage: "[[thm06]]"
+
+  # --- AUXILIARY (consolidated in _auxiliary.md) ---
+  auxiliary:
+    doc_path: "./_auxiliary.md"
+    modules:
+      tlm: {tables: 20, purpose: "Accounts R/P", triggers_from: "[[thm01]], [[tgm01]]"}
+      tqm: {tables: 26, purpose: "Specs/Expediting/Catalog"}
+      tmm: {tables: 30, purpose: "Statistics/Reporting"}
+      trm: {tables: 2, purpose: "Shipment Analysis"}
+      tjm: {tables: 2, purpose: "Claims/Disputes"}
+      tpm: {tables: 2, purpose: "Transfer Tracking"}
+      tnm: {tables: 4, purpose: "History Archive"}
+
+# =============================================================================
+# PRIMARY BUSINESS FLOW
+# =============================================================================
+business_flow:
+  name: "Export Trade Flow"
+  sequence:
+    - step: 1
+      module: "tem"
+      action: "Create Quotation"
+      inputs: ["[[tbm01.ba01]]", "[[tdm01.da01]]"]
+      outputs: ["[[tem01.ea01]]", "[[tem02]]", "[[tem05]]"]
+
+    - step: 2
+      module: "tfm"
+      action: "Create Sales Order (PI)"
+      inputs: ["[[tem01.ea01]]"]
+      outputs: ["[[tfm01.fa01]]", "[[tfm02]]"]
+      triggers: ["Copy BOM from [[tdm05]] to [[tem05]]"]
+
+    - step: 3
+      module: "tfm"
+      action: "Schedule Shipment"
+      inputs: ["[[tfm01.fa01]]", "[[tfm02]]"]
+      outputs: ["[[tfm03]]", "[[tfm04]]"]
+
+    - step: 4
+      module: "tgm"
+      action: "Generate Purchase Order"
+      inputs: ["[[tfm02]]", "[[tem05]]"]
+      outputs: ["[[tgm01.ga01]]", "[[tgm02]]"]
+      calculation: "Purchase Qty = [[tfm02.fb09]] * ([[tem05.ee04]] / [[tem05.ee05]])"
+      link_fields:
+        - "[[tgm01.ga2301]] = [[tfm01.fa01]]"
+        - "[[tgm02.gb2601]] = [[tfm01.fa01]]"
+
+    - step: 5
+      module: "thm"
+      action: "Create Shipment (INVOICE + Packing)"
+      inputs: ["[[tfm01.fa01]]", "[[tfm02]]", "[[tgm01.ga01]]"]
+      outputs: ["[[thm01.ha01]]", "[[thm02]]", "[[thm03]]", "[[thm04]]", "[[thm06]]"]
+      documents:
+        - "INVOICE"
+        - "PACKING LIST"
+        - "SHIPPING MARK"
+      triggers: ["Auto-create AR in [[tlm01]]"]
+
+# =============================================================================
+# KEY FIELD MAPPINGS (Cross-Module FK Relationships)
+# =============================================================================
+field_mappings:
+  customer_chain:
+    master: "[[tbm01.ba01]]"
+    references:
+      - "[[tem01.ea02]]"
+      - "[[tfm01.fa04]]"
+      - "[[thm01.ha04]]"
+      - "[[tlm01.customer]]"
+
+  supplier_chain:
+    master: "[[tcm01.ca01]]"
+    references:
+      - "[[tdm05.de05]]"
+      - "[[tem05.ee06]]"
+      - "[[tgm01.ga04]]"
+
+  product_chain:
+    master: "[[tdm01.da01]]"
+    references:
+      - "[[tdm05.de01]]"
+      - "[[tem02.eb03]]"
+      - "[[tfm02.fb03]]"
+      - "[[tgm02.gb03]]"
+      - "[[thm02.hb02]]"
+
+  order_chain:
+    master: "[[tfm01.fa01]]"
+    references:
+      - "[[tfm02.fb01]]"
+      - "[[tfm03.fc01]]"
+      - "[[tfm04.fd01]]"
+      - "[[tfm05.fe01]]"
+      - "[[tgm01.ga2301]]"
+      - "[[tgm02.gb2601]]"
+      - "[[tem05.ee011]]"
+
+  bom_chain:
+    standard_bom: "[[tdm05]] - PK: (de01, de02)"
+    order_bom: "[[tem05]] - PK: (ee011, ee02, ee03)"
+    copy_trigger: "On [[tfm02]] insert, copy from [[tdm05]] to [[tem05]]"
+    calculation: "Component Qty = Order Qty * (ratio_num / ratio_denom)"
+
+# =============================================================================
+# DATE FORMAT
+# =============================================================================
+date_format:
+  storage: "VARCHAR(8)"
+  pattern: "YYYYMMDD"
+  examples: ["20251226", "20170101"]
+
+# =============================================================================
+# DOCUMENT FILES
+# =============================================================================
+documents:
+  overview: "./00-overview.md"
+  auxiliary: "./_auxiliary.md"
+  modules:
+    - "./01-tam.md"
+    - "./02-tsm.md"
+    - "./03-tbm.md"
+    - "./04-tcm.md"
+    - "./05-tdm.md"
+    - "./06-tem.md"
+    - "./07-tfm.md"
+    - "./08-tgm.md"
+    - "./09-thm.md"
