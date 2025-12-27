@@ -52,7 +52,7 @@ def format_table(results: List[ProductRiskResult], title: str = "") -> str:
         if r.cost_info:
             cost_age = format_age(r.cost_info.quote_age_months)
             quote_date = f"{r.cost_info.quote_date[:4]}-{r.cost_info.quote_date[4:6]}"
-            supplier = r.cost_info.supplier_code
+            supplier = r.cost_info.supplier_name  # 顯示名稱而非代碼
         else:
             cost_age = "無資料"
             quote_date = "-"
@@ -120,7 +120,7 @@ def format_csv(results: List[ProductRiskResult]) -> str:
         if r.cost_info:
             cost_months = r.cost_info.quote_age_months
             quote_date = r.cost_info.quote_date
-            supplier = r.cost_info.supplier_code
+            supplier = r.cost_info.supplier_name  # 顯示名稱而非代碼
         else:
             cost_months = ""
             quote_date = ""

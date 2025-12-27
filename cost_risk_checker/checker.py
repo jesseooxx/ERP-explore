@@ -117,13 +117,12 @@ class CostRiskChecker:
         quote_date = row[4]
         quote_age = calculate_months_ago(quote_date)
 
+        # 組合關係產品：查 BOM 主件的真正供應商
+        if supplier_code in CostRiskQueries.ASSEMBLY_SUPPLIER_CODES:
+            supplier_code = self._get_main_component_supplier(product_code) or supplier_code
+
         # 取得供應商名稱
-        cursor = self.executor.execute(
-            CostRiskQueries.GET_SUPPLIER_NAME,
-            (supplier_code,)
-        )
-        name_row = cursor.fetchone()
-        supplier_name = name_row[0] if name_row else supplier_code
+        supplier_name = self._get_supplier_name(supplier_code)
 
         return CostInfo(
             product_code=product_code,
@@ -134,6 +133,24 @@ class CostRiskChecker:
             quote_date=quote_date,
             quote_age_months=quote_age
         )
+
+    def _get_main_component_supplier(self, product_code: str) -> Optional[str]:
+        """取得組合關係產品的主件供應商"""
+        cursor = self.executor.execute(
+            CostRiskQueries.GET_MAIN_COMPONENT_SUPPLIER,
+            (product_code,)
+        )
+        row = cursor.fetchone()
+        return row[0] if row else None
+
+    def _get_supplier_name(self, supplier_code: str) -> str:
+        """取得供應商名稱，找不到則回傳代碼"""
+        cursor = self.executor.execute(
+            CostRiskQueries.GET_SUPPLIER_NAME,
+            (supplier_code,)
+        )
+        row = cursor.fetchone()
+        return row[0] if row else supplier_code
 
     def _get_purchase_info(self, product_code: str) -> Optional[PurchaseInfo]:
         """取得產品的最後採購資訊"""

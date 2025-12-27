@@ -34,3 +34,14 @@ class CostRiskQueries:
         FROM tcm01
         WHERE ca01 = ?
     """
+
+    # 組合關係的虛擬供應商代碼（需要查 BOM 找主件）
+    ASSEMBLY_SUPPLIER_CODES = ('B02', 'TEST')
+
+    # 取得 BOM 主件的供應商（de09='Y' 表示主件）
+    GET_MAIN_COMPONENT_SUPPLIER = """
+        SELECT TOP 1
+            de05 as supplier_code
+        FROM tdm05
+        WHERE de01 = ? AND de09 = 'Y'
+    """
