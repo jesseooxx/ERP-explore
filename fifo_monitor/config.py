@@ -1,5 +1,6 @@
 """設定模組"""
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import List
 
 
 @dataclass
@@ -13,6 +14,9 @@ class Config:
 
     # 監控設定
     poll_interval: int = 3  # 秒
+
+    # 客戶過濾 - 只監控這些客戶的訂單 (空列表 = 監控全部)
+    customer_filter: List[str] = field(default_factory=lambda: ["496", "497"])
 
     # 連線字串
     @property
