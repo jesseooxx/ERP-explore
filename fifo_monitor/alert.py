@@ -21,7 +21,7 @@ class FIFOAlertWindow:
 
         self.root = tk.Tk()
         self.root.title("⚠️ FIFO 訂單警告")
-        self.root.geometry("550x400")
+        self.root.geometry("680x420")
         self.root.resizable(False, False)
 
         # 置中顯示
@@ -81,10 +81,10 @@ class FIFOAlertWindow:
         self.tree.heading("remaining", text="剩餘數量")
         self.tree.heading("elapsed", text="已過時間")
 
-        self.tree.column("pi_no", width=100)
-        self.tree.column("order_date", width=100)
-        self.tree.column("remaining", width=100, anchor=tk.E)
-        self.tree.column("elapsed", width=100)
+        self.tree.column("pi_no", width=160, minwidth=140, anchor=tk.CENTER)
+        self.tree.column("order_date", width=120, minwidth=100, anchor=tk.CENTER)
+        self.tree.column("remaining", width=120, minwidth=100, anchor=tk.CENTER)
+        self.tree.column("elapsed", width=120, minwidth=100, anchor=tk.CENTER)
 
         # 插入資料
         for order in self.earlier_orders:
