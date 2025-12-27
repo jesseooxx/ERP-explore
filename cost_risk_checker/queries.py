@@ -28,9 +28,9 @@ class CostRiskQueries:
         ORDER BY t1.ga03 DESC
     """
 
-    # 取得供應商名稱
+    # 取得供應商簡稱（ca03），找不到則用全稱（ca02）
     GET_SUPPLIER_NAME = """
-        SELECT ca02 as supplier_name
+        SELECT COALESCE(NULLIF(ca03, ''), ca02) as supplier_name
         FROM tcm01
         WHERE ca01 = ?
     """
