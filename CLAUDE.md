@@ -70,7 +70,7 @@ py -3.12-32 -c "import struct; print(f'{struct.calcsize(\"P\") * 8}-bit')"
 ### Trade Module Table Naming
 | Prefix | Module | Purpose |
 |--------|--------|---------|
-| tfm01/02 | Sales Order (S/C) | Order master/detail |
+| tfm01/02 | Sales Order (PI) | Order master/detail |
 | tdm01/05 | Product | Product master/BOM assembly |
 | tem01/02/05 | Quotation | Quote master/detail/assembly |
 | tgm01/02 | Purchase Order | PO master/detail |
