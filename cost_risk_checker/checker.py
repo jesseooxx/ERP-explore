@@ -64,6 +64,59 @@ def format_age(months: int) -> str:
     return f"{months}月"
 
 
+def clean_supplier_name(name: str) -> str:
+    """清理供應商名稱，移除常見後綴得到簡稱"""
+    if not name:
+        return name
+
+    # 常見後綴（按長度排序，長的先處理）
+    suffixes = [
+        "股份有限公司",
+        "有限公司",
+        "股份有限",
+        "實業有限",
+        "企業有限",
+        "工業有限",
+        "國際有限",
+        "事業有限",
+        "科技有限",
+        "精密有限",
+        "貿易有限",
+        "五金有限",
+        "塑膠有限",
+        "實業股份",
+        "企業股份",
+        "工業股份",
+        "國際股份",
+        "科技股份",
+        "有限公",  # 被截斷的
+        "股份有",  # 被截斷的
+        "國際展",  # 被截斷的
+        "國際運",  # 被截斷的
+        "精密工",  # 被截斷的
+        "事業有",  # 被截斷的
+        "產物保",  # 被截斷的
+        "貨運承",  # 被截斷的
+        "速運股",  # 被截斷的
+        "股份",
+        "有限",
+        "公司",
+        "企業",
+        "實業",
+        "工業",
+        "國際",
+        "科技",
+    ]
+
+    result = name
+    for suffix in suffixes:
+        if result.endswith(suffix):
+            result = result[:-len(suffix)]
+            break  # 只移除一次
+
+    return result.strip() or name  # 如果清空了就用原名
+
+
 class CostRiskChecker:
     """成本風險檢查器"""
 
@@ -144,13 +197,15 @@ class CostRiskChecker:
         return row[0] if row else None
 
     def _get_supplier_name(self, supplier_code: str) -> str:
-        """取得供應商名稱，找不到則回傳代碼"""
+        """取得供應商簡稱，找不到則回傳代碼"""
         cursor = self.executor.execute(
             CostRiskQueries.GET_SUPPLIER_NAME,
             (supplier_code,)
         )
         row = cursor.fetchone()
-        return row[0] if row else supplier_code
+        if row:
+            return clean_supplier_name(row[0])
+        return supplier_code
 
     def _get_purchase_info(self, product_code: str) -> Optional[PurchaseInfo]:
         """取得產品的最後採購資訊"""
