@@ -78,10 +78,18 @@ kernel32 = ctypes.windll.kernel32
 user32 = ctypes.windll.user32
 gdi32 = ctypes.windll.gdi32
 
-# Setup DLL directory
-DLL_DIR = 'X:/EXE'
-if not os.path.exists(DLL_DIR):
-    print(f"ERROR: DLL directory not found: {DLL_DIR}")
+# Setup DLL directory - try local first, then X:/EXE
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+LOCAL_DLL_DIR = os.path.join(SCRIPT_DIR, 'dll')
+if os.path.exists(LOCAL_DLL_DIR) and os.path.exists(os.path.join(LOCAL_DLL_DIR, 'nview32.dll')):
+    DLL_DIR = LOCAL_DLL_DIR
+    print(f"Using local DLLs from: {DLL_DIR}")
+elif os.path.exists('X:/EXE'):
+    DLL_DIR = 'X:/EXE'
+else:
+    print(f"ERROR: DLL directory not found!")
+    print(f"  Checked: {LOCAL_DLL_DIR}")
+    print(f"  Checked: X:/EXE")
     sys.exit(1)
 
 os.environ['PATH'] = DLL_DIR + os.pathsep + os.environ.get('PATH', '')
