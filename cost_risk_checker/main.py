@@ -1,5 +1,6 @@
 """CLI 入口點"""
 import argparse
+import io
 import sys
 import pyodbc
 
@@ -10,6 +11,10 @@ from cost_risk_checker.formatter import format_table, format_csv
 
 
 def main():
+    # Windows 終端機 UTF-8 支援
+    if sys.platform == "win32":
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(
         description="檢查產品成本風險 - 找出報價過時的品項"
     )
