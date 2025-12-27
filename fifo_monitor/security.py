@@ -39,3 +39,47 @@ def validate_query(query: str) -> None:
         pattern = r'\b' + keyword + r'\b'
         if re.search(pattern, normalized):
             raise SecurityError(f"禁止使用 {keyword}")
+
+
+class SafeQueryExecutor:
+    """安全查詢執行器 - 只允許執行安全的 SELECT 查詢"""
+
+    def __init__(self, connection):
+        """
+        Args:
+            connection: pyodbc 連線物件
+        """
+        self.connection = connection
+        self._cursor = None
+
+    @property
+    def cursor(self):
+        if self._cursor is None:
+            self._cursor = self.connection.cursor()
+        return self._cursor
+
+    def execute(self, query: str, params: tuple = None):
+        """
+        執行安全的 SQL 查詢。
+
+        Args:
+            query: SQL 查詢字串
+            params: 查詢參數
+
+        Returns:
+            查詢結果 cursor
+
+        Raises:
+            SecurityError: 如果查詢不安全
+        """
+        validate_query(query)
+
+        if params:
+            return self.cursor.execute(query, params)
+        return self.cursor.execute(query)
+
+    def close(self):
+        """關閉連線"""
+        if self._cursor:
+            self._cursor.close()
+        self.connection.close()
