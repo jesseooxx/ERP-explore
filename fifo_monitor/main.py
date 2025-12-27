@@ -31,12 +31,14 @@ def main():
         conn = pyodbc.connect(config.connection_string)
         executor = SafeQueryExecutor(conn)
 
-        # 初始化監控器和檢查器
-        monitor = TFM03Monitor(executor)
+        # 初始化監控器和檢查器（帶客戶過濾）
+        monitor = TFM03Monitor(executor, customer_filter=config.customer_filter)
         checker = FIFOChecker(executor)
 
         monitor.initialize()
         logger.info("監控器初始化完成")
+        if config.customer_filter:
+            logger.info(f"📋 過濾客戶: {', '.join(config.customer_filter)}")
         logger.info(f"開始監控 tfm03（每 {config.poll_interval} 秒檢查一次）")
         logger.info("按 Ctrl+C 停止監控")
 

@@ -1,4 +1,5 @@
 """SQL 查詢白名單 - 只有這些查詢可以被執行"""
+from typing import List
 
 
 class FIFOQueries:
@@ -7,6 +8,11 @@ class FIFOQueries:
     # 計算 tfm03 記錄數
     COUNT_TFM03 = """
         SELECT COUNT(*) FROM tfm03
+    """
+
+    # 計算 tfm03 記錄數（帶客戶過濾）
+    COUNT_TFM03_FILTERED = """
+        SELECT COUNT(*) FROM tfm03 WHERE fc10 IN ({customers})
     """
 
     # 取得最新的排程記錄（用於偵測新增）
@@ -20,6 +26,29 @@ class FIFOQueries:
         FROM tfm03
         ORDER BY fc01 DESC, fc02 DESC
     """
+
+    # 取得最新的排程記錄（帶客戶過濾）
+    GET_NEW_SCHEDULES_FILTERED = """
+        SELECT TOP 20
+            fc01 as pi_no,
+            fc04 as product,
+            fc10 as customer,
+            fc02 as schedule_date,
+            fc05 as scheduled_qty
+        FROM tfm03
+        WHERE fc10 IN ({customers})
+        ORDER BY fc01 DESC, fc02 DESC
+    """
+
+    @staticmethod
+    def build_customer_filter(customers: List[str]) -> str:
+        """建立安全的客戶過濾字串（防止 SQL injection）"""
+        # 只允許英數字和底線
+        safe_customers = []
+        for c in customers:
+            if c.replace("-", "").replace("_", "").isalnum():
+                safe_customers.append(f"'{c}'")
+        return ", ".join(safe_customers) if safe_customers else "''"
 
     # 取得訂單日期
     GET_ORDER_DATE = """

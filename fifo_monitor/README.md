@@ -5,6 +5,7 @@
 ## 功能
 
 - 每 3 秒輪詢 SQL Server 的 `tfm03` 表格
+- **客戶過濾**：可設定只監控特定客戶的訂單（避免看到其他人的操作）
 - 偵測到新排程時，查詢同客戶+同產品是否有更早的訂單未消完
 - 若有違規則顯示 Windows 彈窗警告
 - 支援複製違規清單到剪貼簿
@@ -104,6 +105,27 @@ class Config:
     db_name: str = "DATAWIN"          # 資料庫名稱
     db_driver: str = "ODBC Driver 17 for SQL Server"
     poll_interval: int = 3            # 輪詢間隔（秒）
+
+    # 客戶過濾 - 只監控這些客戶的訂單
+    customer_filter: List[str] = ["496", "497"]  # 空列表 = 監控全部
+```
+
+### 客戶過濾說明
+
+由於 ERP 是多人共用的系統，預設會看到所有人的操作。透過 `customer_filter` 設定，可以只監控特定客戶的訂單：
+
+```python
+# 只監控客戶 496 和 497
+customer_filter: List[str] = ["496", "497"]
+
+# 監控所有客戶（不過濾）
+customer_filter: List[str] = []
+```
+
+啟動時會顯示過濾狀態：
+```
+[Monitor] 只監控客戶: 496, 497
+[Monitor] 初始化完成，目前有 7854 筆記錄
 ```
 
 ## 單元測試
